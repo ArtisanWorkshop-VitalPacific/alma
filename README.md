@@ -63,7 +63,7 @@ A build on Vercel stops if one is missing.
 | Photographs | Source | Status |
 | --- | --- | --- |
 | `cover`, `proof`, `quad` | Generated in Higgsfield | Illustrative |
-| `biola-bell-tower`, `biola-library` | Biola University press room stock photos | Need Biola's permission before launch. Scaled down to 2400px wide at build time. Used only in the "Our story" section, credited to Biola. |
+| `biola-bell-tower`, `biola-library` | Biola University press room stock photos | Need Biola's permission before launch. Scaled down to 2400px wide at build time. Used only in the "Our story" section. The page shows no credit line (removed at Matt's request on 2026-11-26). The source is recorded in `images.json`. |
 | `portrait-1` to `portrait-7` | Unsplash (photographers are listed in `images.json`) | Stock. The page does not label them as stock. The free Unsplash licence does not include model releases. Replace with released or real portraits before launch. |
 
 To make the repo self-contained, save the files into `public/images` under the
@@ -118,7 +118,8 @@ What does not exist yet:
 - Stock portraits appear only beside a general label such as "Alumni". They are
   never given a name, a quote or a story. The page does not say that they are
   stock (removed at Matt's request on 2026-11-26).
-- Biola University is named in text only. No Biola logo is used.
+- Biola University is named in text only. No Biola logo is used. Its two campus
+  photographs carry no caption or credit on the page.
 - "No part of a profile is drafted by a language model" describes the profiles
   Alma delivers. The library's search does use a language model, and the site
   says so.

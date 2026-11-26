@@ -32,12 +32,7 @@ export function Footer() {
           </ul>
         </div>
 
-        <div className="t-caption mt-12 grid max-w-[44rem] gap-1 text-snow-2">
-          {footer.notes.map((note) => (
-            <p key={note}>{note}</p>
-          ))}
-          <p className="mt-3">{footer.copyright}</p>
-        </div>
+        <p className="t-caption mt-12 text-snow-2">{footer.copyright}</p>
       </div>
     </footer>
   );

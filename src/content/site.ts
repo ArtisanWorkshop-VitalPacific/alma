@@ -35,8 +35,8 @@ export const nav = [
   { href: "#library", label: "Library" },
   { href: "#approach", label: "Approach" },
   { href: "#standards", label: "Standards" },
-  { href: "#story", label: "Our story" },
   { href: "#fees", label: "Fees" },
+  { href: "#story", label: "Our story" },
 ];
 
 /** The one call to action. It opens an email, so it says so. */
@@ -47,8 +47,6 @@ export const hero = {
   heading: "A university is best understood through the lives of its people.",
   body: "Alma’s journalists document the careers and contributions of your alumni, faculty, staff and friends in reported profiles. We build a searchable story library for your institution, so that your staff can find the right story for a publication or a campaign.",
   secondary: { href: "#approach", label: "How a profile is made" },
-  partnerLabel: "Inaugural partner",
-  partner: "Biola University, 2024 to present",
   cover: {
     kicker: ["Alumni, faculty,", "staff and friends"],
     lead: ["Careers and", "contributions"],
@@ -406,8 +404,6 @@ export const story = {
       alt: "The Biola University library at dusk, seen across a lawn, with a glass rotunda on its roof.",
     },
   } satisfies Record<string, { photo: PhotoName; alt: string }>,
-  caption: "The Bell Tower and the Library at Biola University.",
-  credit: "Photographs: Biola University.",
 };
 
 export const fees = {
@@ -506,6 +502,5 @@ export const contact = {
 };
 
 export const footer = {
-  notes: ["Photographs of the Biola University campus: Biola University."],
   copyright: "© 2026 Alma",
 };

@@ -22,9 +22,9 @@ export default function Home() {
         <Library />
         <Approach />
         <Standards />
-        <Story />
         <Fees />
         <Faq />
+        <Story />
         <Contact />
       </main>
       <Footer />

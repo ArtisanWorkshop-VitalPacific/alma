@@ -7,7 +7,6 @@ export function Fees() {
   return (
     <Section
       id="fees"
-      tone="mist"
       label={fees.label}
       heading={fees.heading}
       lead={fees.lead}
@@ -21,7 +20,9 @@ export function Fees() {
             >
               <dt className="t-subhead">{row.item}</dt>
               <dd className="max-w-[34rem] text-ink-2">{row.detail}</dd>
-              <dd className="t-subhead md:whitespace-nowrap md:text-right">{row.fee}</dd>
+              <dd className="t-subhead md:whitespace-nowrap md:text-right">
+                {row.fee}
+              </dd>
             </div>
           ))}
         </dl>

@@ -5,8 +5,16 @@ import { Section } from "./Section";
 
 export function Faq() {
   return (
-    <Section id="questions" label={questions.label} heading={questions.heading}>
-      <Reveal className="faq mt-8 border-t border-[var(--hair-strong)]" delay={120}>
+    <Section
+      id="questions"
+      tone="mist"
+      label={questions.label}
+      heading={questions.heading}
+    >
+      <Reveal
+        className="faq mt-8 border-t border-[var(--hair-strong)]"
+        delay={120}
+      >
         {questions.items.map((item, index) => (
           <details
             key={item.q}

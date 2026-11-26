@@ -20,14 +20,6 @@ export function Hero() {
               {hero.secondary.label}
             </a>
           </div>
-          <div className="rule mt-12 max-w-[36rem] pt-5">
-            <p className="t-body-sm text-ink-2">{hero.partnerLabel}</p>
-            <p className="mt-1 font-medium tracking-[-0.01em]">
-              <a href="#story" className="hover:underline">
-                {hero.partner}
-              </a>
-            </p>
-          </div>
         </div>
 
         <div className="lg:col-span-5">
