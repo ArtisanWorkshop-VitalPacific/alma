@@ -28,8 +28,8 @@ function photo(name: PhotoName): Photo {
  * biolaBellTower, biolaLibrary: from Biola University's press room. They
  *   appear only in the partnership section and need Biola's permission before
  *   the site is public.
- * portrait1 to portrait7: stock portraits from Unsplash. They are illustrative
- *   and are never shown with a name.
+ * portrait1 to portrait7: stock portraits from Unsplash. They are shown with a
+ *   group label only, never with a name, a quote or a story.
  */
 export const photos = Object.fromEntries(
   (Object.keys(manifest) as PhotoName[]).map((name) => [name, photo(name)]),

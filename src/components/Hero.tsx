@@ -49,9 +49,8 @@ function HeroObject() {
   return (
     <figure className="hero-object">
       <figcaption className="sr-only">
-        An illustrative magazine cover carrying the Alma name, with a panel from
-        the story library showing a plain-language search and three matching
-        profiles.
+        A magazine cover carrying the Alma name, with a panel from the story
+        library showing a plain-language search and three matching profiles.
       </figcaption>
 
       <div className="cover" aria-hidden="true">

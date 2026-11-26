@@ -63,7 +63,7 @@ A build on Vercel stops if one is missing.
 | --- | --- | --- |
 | `cover`, `proof`, `quad` | Generated in Higgsfield | Illustrative |
 | `biola-bell-tower`, `biola-library` | Biola University press room stock photos | Need Biola's permission before launch. Scaled down to 2400px wide at build time. Used only in the partnership section, credited to Biola. |
-| `portrait-1` to `portrait-7` | Unsplash (photographers are listed in `images.json`) | Illustrative. The free Unsplash licence does not include model releases. Replace with released or real portraits before launch. |
+| `portrait-1` to `portrait-7` | Unsplash (photographers are listed in `images.json`) | Stock. The page does not label them as stock. The free Unsplash licence does not include model releases. Replace with released or real portraits before launch. |
 
 To make the repo self-contained, save the files into `public/images` under the
 names in `images.json`, delete the `/public/images/*.jpg` line from `.gitignore`,
@@ -100,8 +100,10 @@ What does not exist yet:
 - Get Biola's written permission for the two campus photographs, or replace them.
 - Replace the stock portraits with released photographs, or with real portraits
   of people Alma has profiled, with their permission.
-- The site describes the story library as part of the service. It must exist
-  before the site is public, or the copy must say that it is forthcoming.
+- The story library is the software side of the business: Alma builds one for
+  each institution. The database is ready. Sign-in, the screens, the embedding
+  step and the answer step still have to be built before a library can be set
+  up for a customer.
 - Confirm the documentary claim ("Emmy Award-winning documentary producers")
   with the producers who will be named if a university asks.
 - The wordmark is set in type. Replace it when a logo exists.
@@ -110,9 +112,10 @@ What does not exist yet:
 
 - No invented testimonials, client logos, names, quotes or story excerpts.
   Interface drawings show names and running text as bars.
-- The library panels are labelled as illustrations with sample data.
-- Stock portraits appear only beside a general label such as "Alumni", and the
-  page says that they are illustrative.
+- The library panels carry one caption: "Illustration with sample data."
+- Stock portraits appear only beside a general label such as "Alumni". They are
+  never given a name, a quote or a story. The page does not say that they are
+  stock (removed at Matt's request on 2026-11-26).
 - Biola University is named in text only. No Biola logo is used.
 - "No part of a profile is drafted by a language model" describes the profiles
   Alma delivers. The library's search does use a language model, and the site

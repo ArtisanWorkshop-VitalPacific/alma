@@ -20,7 +20,7 @@ export const site = {
   tagline: "An editorial studio and story library for universities",
   title: "Alma | Editorial studio and story library for universities",
   description:
-    "Alma’s journalists document the careers and contributions of a university’s alumni, faculty, staff and friends in reported profiles, and keep them in a searchable story library.",
+    "Alma’s journalists document the careers and contributions of a university’s alumni, faculty, staff and friends in reported profiles, and build a searchable story library for each institution.",
   /**
    * Where the contact form sends its email.
    * Set NEXT_PUBLIC_CONTACT_EMAIL in the Vercel project settings.
@@ -43,7 +43,7 @@ export const cta = { href: "#contact", label: "Write to us" };
 export const hero = {
   label: "An editorial studio and story library for universities",
   heading: "A university is best understood through the lives of its people.",
-  body: "Alma’s journalists document the careers and contributions of your alumni, faculty, staff and friends in reported profiles. We keep those profiles in a searchable story library, so that your staff can find the right story for a publication or a campaign.",
+  body: "Alma’s journalists document the careers and contributions of your alumni, faculty, staff and friends in reported profiles. We build a searchable story library for your institution, so that your staff can find the right story for a publication or a campaign.",
   secondary: { href: "#approach", label: "How a profile is made" },
   partnerLabel: "Inaugural partner",
   partner: "Biola University, 2024 to present",
@@ -74,28 +74,27 @@ export const subjects = {
       title: "Alumni",
       body: "Graduates whose careers and contributions show what the university’s education makes possible.",
       photo: "portrait1",
-      alt: "Illustrative portrait of a woman in a blue dress and glasses, smiling, seated in an office.",
+      alt: "A woman in a blue dress and glasses, smiling, seated in an office.",
     },
     {
       title: "Faculty",
       body: "Scholars and teachers, and the research and mentoring for which they are known.",
       photo: "portrait2",
-      alt: "Illustrative portrait of a bearded man in round glasses and a striped shirt.",
+      alt: "A bearded man in round glasses and a striped shirt.",
     },
     {
       title: "Staff",
       body: "The people whose daily work students and colleagues rely on.",
       photo: "portrait3",
-      alt: "Illustrative portrait of a woman in a maroon cardigan, smiling.",
+      alt: "A woman in a maroon cardigan, smiling.",
     },
     {
       title: "Friends of the university",
       body: "Donors, parents, trustees and volunteers who have made the university’s work their own.",
       photo: "portrait4",
-      alt: "Illustrative portrait of a man in glasses and a navy blazer, standing by a window.",
+      alt: "A man in glasses and a navy blazer, standing by a window.",
     },
   ] satisfies { title: string; body: string; photo: PhotoName; alt: string }[],
-  note: "Portraits are illustrative stock photographs. They do not show people Alma has profiled.",
 };
 
 export const purpose = {
@@ -117,7 +116,7 @@ export const purpose = {
     },
     {
       title: "A library of the university’s stories",
-      body: "Each profile is kept in a story library that belongs to your institution. Staff can return to it whenever an issue, an appeal or a campaign calls for a particular kind of story.",
+      body: "We build a story library for your institution and keep each profile in it. Staff can return to it whenever an issue, an appeal or a campaign calls for a particular kind of story.",
     },
     {
       title: "Evidence of what graduates accomplish",
@@ -157,8 +156,8 @@ export type Office = {
 
 export const library = {
   label: "The story library",
-  heading: "Every profile is kept in a library your staff can search.",
-  lead: "The profiles we write for you are held in a private story library. Each profile is stored in full and described with metadata: the person’s relationship to the university, class year, college, field of study, career and themes. Staff can look a person up by name, filter by any of those fields, or ask a question in plain language and receive an answer drawn from your own stories, with a citation for each profile it uses.",
+  heading: "We build a searchable story library for your institution.",
+  lead: "The library is private to your institution, and every profile we write for you is kept in it. Each profile is stored in full and described with metadata: the person’s relationship to the university, class year, college, field of study, career and themes. Staff can look a person up by name, filter by any of those fields, or ask a question in plain language and receive an answer drawn from your own stories, with a citation for each profile it uses.",
   tabsLabel: "How each office uses the library",
   askLabel: "Ask in plain language",
   refine: {
@@ -166,7 +165,7 @@ export const library = {
     options: ["By class year", "By college", "Add a theme"],
   },
   queryLabel: "Example search",
-  note: "These panels illustrate the library with sample data. Titles and text are drawn as bars, and the portraits are stock photographs.",
+  note: "Illustration with sample data.",
   offices: [
     {
       id: "alumni",
@@ -424,7 +423,7 @@ export const fees = {
     {
       item: "Story library",
       detail:
-        "A private, searchable library of your profiles, with plain-language search and cited answers.",
+        "A private, searchable library built for your institution, with plain-language search and cited answers.",
       fee: "$125 per month",
     },
     {
@@ -468,7 +467,7 @@ export const questions = {
     },
     {
       q: "What is the story library?",
-      a: "A private, searchable collection of the profiles we have written for your university. Staff can search it by keyword or ask a question in plain language, and each answer cites the profiles it draws on.",
+      a: "A private, searchable collection of profiles that we build for your institution. Staff can search it by keyword or ask a question in plain language, and each answer cites the profiles it draws on.",
     },
     {
       q: "How does the library’s search work?",
@@ -500,10 +499,6 @@ export const contact = {
 };
 
 export const footer = {
-  notes: [
-    "Photographs of the Biola University campus: Biola University.",
-    "Portraits are illustrative stock photographs from Unsplash and do not show people Alma has profiled.",
-    "Other photographs are illustrative.",
-  ],
+  notes: ["Photographs of the Biola University campus: Biola University."],
   copyright: "© 2026 Alma",
 };
