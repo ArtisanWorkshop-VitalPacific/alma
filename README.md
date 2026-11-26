@@ -7,8 +7,8 @@ staff and friends, and keep them in a searchable story library.
 One page. Next.js 16 (App Router), TypeScript, Tailwind CSS 4. Deployed on Vercel
 from the `main` branch.
 
-This repo is the marketing site only. The story library itself (the searchable
-product the site describes) is not in this repo yet.
+This repo holds the marketing site and the database schema for the story library.
+The library's own screens are not built yet. See "Story library backend" below.
 
 ## Run it
 
@@ -68,6 +68,29 @@ A build on Vercel stops if one is missing.
 To make the repo self-contained, save the files into `public/images` under the
 names in `images.json`, delete the `/public/images/*.jpg` line from `.gitignore`,
 and commit them. The script then skips the download.
+
+## Story library backend
+
+The library runs on Supabase (Postgres). Project `alma-library`, region
+`us-east-1`, free plan. The schema is in `supabase/migrations/`.
+
+What exists:
+
+- Tables: `universities`, `members`, `alma_staff`, `stories`, `story_chunks`,
+  `story_uses`, `calendar_items`.
+- Row level security on every table. A signed-in person sees only the published
+  stories of universities they are a member of. Alma staff can read and write
+  everything. Nothing is readable without signing in.
+- `search_stories`: hybrid search. Full-text search and semantic search
+  (pgvector, 384-dimension embeddings) combined with reciprocal rank fusion, with
+  filters for relationship, college, career, theme and class year.
+
+What does not exist yet:
+
+- Any stories. The database is empty.
+- The function that splits a story into passages and embeds them.
+- The step that asks a language model to compose a cited answer.
+- Sign-in and the library's screens.
 
 ## Before launch
 
