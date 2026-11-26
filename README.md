@@ -34,7 +34,7 @@ matched, what was substituted and what was not copied.
   generated in Higgsfield. The torn edges are drawn in `src/components/Torn.tsx`.
 - The voice is Alma's, not Section's: full, measured sentences.
 - The earlier design (serif headings, a label column beside each section) is
-  kept at the git tag `v1-prospectus`.
+  kept on the branch `v1-prospectus`.
 
 ## Where things live
 
