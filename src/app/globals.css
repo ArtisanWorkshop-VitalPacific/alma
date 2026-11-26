@@ -798,10 +798,26 @@
 
   .glow {
     background:
-      radial-gradient(36% 70% at 10% 0%, rgb(172 212 241 / 0.6), transparent 72%),
-      radial-gradient(30% 62% at 36% 0%, rgb(255 204 204 / 0.5), transparent 72%),
-      radial-gradient(30% 62% at 62% 0%, rgb(243 179 14 / 0.2), transparent 72%),
-      radial-gradient(36% 70% at 90% 0%, rgb(166 219 165 / 0.5), transparent 72%);
+      radial-gradient(
+        36% 70% at 10% 0%,
+        rgb(172 212 241 / 0.6),
+        transparent 72%
+      ),
+      radial-gradient(
+        30% 62% at 36% 0%,
+        rgb(255 204 204 / 0.5),
+        transparent 72%
+      ),
+      radial-gradient(
+        30% 62% at 62% 0%,
+        rgb(243 179 14 / 0.2),
+        transparent 72%
+      ),
+      radial-gradient(
+        36% 70% at 90% 0%,
+        rgb(166 219 165 / 0.5),
+        transparent 72%
+      );
     height: clamp(12rem, 22vw, 20rem);
     inset: 0 0 auto;
     -webkit-mask-image: linear-gradient(to bottom, #000 10%, transparent);
