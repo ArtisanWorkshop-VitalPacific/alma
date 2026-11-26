@@ -2,10 +2,15 @@
 
 /* ------------------------------------------------------------------
    Alma design tokens
-   Neutral surfaces, one institutional blue accent, a news serif for
-   headings and lead paragraphs, and a precise sans for everything else.
-   The page is laid out like a prospectus: a section label in a left
-   column, with the heading and prose beside it.
+
+   The system follows the one recorded from sectionai.com on 2026-11-26:
+   a geometric sans for headings and text, a serif for small labels, white
+   and warm off-white bands, near-black pill buttons, one blue accent, an
+   amber accent on dark, and torn-paper edges.
+
+   Colours, sizes, radii and shadows are the measured values. The typefaces
+   are open-licensed stand-ins: DM Sans for Goga and Newsreader for Azurio,
+   which are commercial faces Alma does not hold a licence for.
    The same values are mirrored in design/tokens.json.
    ------------------------------------------------------------------ */
 
@@ -15,60 +20,88 @@
   --breakpoint-lg: 66.75rem; /* 1068px */
   --breakpoint-xl: 90rem; /* 1440px */
 
-  --color-ink: #1d1d1f;
-  --color-ink-2: #6e6e73;
-  --color-ink-3: #86868b;
+  --color-ink: #0a070d;
+  --color-ink-2: #484640;
+  /* The source uses #7a7770 here. Darkened so small text passes AA on the warm bands. */
+  --color-ink-3: #6b6862;
   --color-paper: #ffffff;
-  --color-mist: #f5f5f7;
-  --color-night: #000000;
-  --color-coal: #1d1d1f;
-  --color-coal-2: #2d2d2f;
-  --color-snow: #f5f5f7;
-  --color-snow-2: #a1a1a6;
-  --color-alma: #1b3fa0;
-  --color-alma-hover: #2550c4;
-  --color-alma-sky: #8fb0ff;
-  --color-stock: #fbfaf7;
+  --color-mist: #faf9f6;
+  --color-sand: #f3f2f1;
+  --color-kraft: #f0eee7;
+  --color-line: #e8e8e8;
+  --color-night: #121313;
+  --color-coal: #121313;
+  --color-black: #000000;
+  --color-snow: #ffffff;
+  --color-snow-2: #b3b7b9;
+  --color-snow-3: #909090;
+  --color-alma: #3d4cf0;
+  --color-alma-hover: #2f3cd2;
+  --color-alma-ink: #3900ff;
+  --color-alma-sky: #839ff1;
+  --color-amber: #f3b30e;
+  --color-green: #477f45;
 
+  --font-sans:
+    var(--font-dm-sans), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    system-ui, sans-serif;
   --font-display:
     var(--font-newsreader), "Iowan Old Style", "Palatino Linotype", Palatino,
     Georgia, serif;
-  --font-sans:
-    var(--font-geist), -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui,
-    sans-serif;
 
   --ease-apple: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-apple-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 :root {
-  --accent: var(--color-alma);
-  --accent-hover: var(--color-alma-hover);
+  /* Accent for text and small marks. Fills use --color-alma. */
+  --accent: var(--color-alma-ink);
+  --accent-hover: var(--color-alma);
   --text-1: var(--color-ink);
   --text-2: var(--color-ink-2);
   --text-3: var(--color-ink-3);
-  --hair: rgb(0 0 0 / 0.08);
-  --hair-strong: rgb(0 0 0 / 0.14);
-  --gutter: clamp(1.375rem, 4vw, 3rem);
-  --section: clamp(4.5rem, 8.5vw, 8.5rem);
+  --hair: var(--color-line);
+  --hair-strong: #d9d7d2;
+  --gutter: clamp(1.1875rem, 5.55vw, 5rem);
+  --section: clamp(4rem, 6.7vw, 6rem);
+  --radius-1: 5px;
+  --radius-2: 8px;
+  --radius-3: 14px;
+  --radius-4: 16px;
+  --radius-5: 25px;
+  --shadow-card: 0 8px 20px rgb(0 0 0 / 0.08);
+  /* Paper grain for the torn sheets. */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .32  0 0 0 0 .28  0 0 0 0 .2  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.34'/%3E%3C/svg%3E");
 }
 
-/* Dark sections re-point the same variables, so components need no dark variants. */
+/* Dark bands re-point the same variables, so components need no dark variants. */
 .on-dark {
-  --accent: var(--color-alma-sky);
-  --accent-hover: #b4caff;
+  --accent: var(--color-amber);
+  --accent-hover: #ffc93a;
   --text-1: var(--color-snow);
   --text-2: var(--color-snow-2);
+  --text-3: var(--color-snow-3);
+  --hair: rgb(255 255 255 / 0.14);
+  --hair-strong: rgb(255 255 255 / 0.24);
+  color: var(--text-1);
+}
+
+/* A light card inside a dark band puts the variables back. */
+.on-light {
+  --accent: var(--color-alma-ink);
+  --accent-hover: var(--color-alma);
+  --text-1: var(--color-ink);
+  --text-2: var(--color-ink-2);
   --text-3: var(--color-ink-3);
-  --hair: rgb(255 255 255 / 0.1);
-  --hair-strong: rgb(255 255 255 / 0.2);
+  --hair: var(--color-line);
+  --hair-strong: #d9d7d2;
   color: var(--text-1);
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 4.25rem;
+    scroll-padding-top: 4.75rem;
     -webkit-text-size-adjust: 100%;
   }
 
@@ -76,15 +109,16 @@
     background: var(--color-paper);
     color: var(--text-1);
     font-family: var(--font-sans);
-    font-size: 1.0625rem;
-    line-height: 1.5;
+    font-optical-sizing: auto;
+    font-size: clamp(1rem, 0.3vw + 0.93rem, 1.125rem);
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
 
   ::selection {
-    background: rgb(27 63 160 / 0.2);
+    background: rgb(61 76 240 / 0.2);
   }
 
   :focus-visible {
@@ -109,137 +143,134 @@
 
   .t-hero,
   .t-heading,
-  .t-display-2,
-  .t-subhead,
-  .t-lead,
-  .numeral {
-    font-family: var(--font-display);
-    font-optical-sizing: auto;
-    font-variant-numeric: lining-nums;
-  }
-
-  .t-hero,
-  .t-heading,
   .t-display-2 {
-    font-weight: 500;
+    /* Goga's medium is a little darker than DM Sans at 500. */
+    font-weight: 540;
     text-wrap: balance;
   }
 
-  /* The page title. A full sentence, so it is set smaller than a slogan would be. */
+  /* 64/67 on desktop, 42/46 on a phone. */
   .t-hero {
-    font-size: clamp(2.5rem, 3.3vw + 1.05rem, 4.25rem);
+    font-size: clamp(2.625rem, 3.2vw + 1.1rem, 4rem);
+    letter-spacing: -0.012em;
     line-height: 1.05;
-    letter-spacing: -0.026em;
   }
 
-  /* Section headings. */
+  /* Section headings: 48/53 on desktop, 32/35 on a phone. */
   .t-heading {
-    font-size: clamp(1.875rem, 1.9vw + 1.2rem, 3rem);
+    font-size: clamp(2rem, 2.1vw + 1.1rem, 3rem);
+    letter-spacing: -0.012em;
     line-height: 1.1;
-    letter-spacing: -0.021em;
   }
 
+  /* 36/41 on desktop, 28/32 on a phone. */
   .t-display-2 {
-    font-size: clamp(1.625rem, 1.4vw + 1rem, 2.25rem);
-    line-height: 1.12;
-    letter-spacing: -0.018em;
+    font-size: clamp(1.75rem, 1.1vw + 1.25rem, 2.25rem);
+    letter-spacing: -0.012em;
+    line-height: 1.15;
   }
 
   /* Headings of items inside a section. */
   .t-subhead {
-    font-size: clamp(1.25rem, 0.4vw + 1.15rem, 1.4375rem);
-    font-weight: 500;
-    line-height: 1.22;
-    letter-spacing: -0.012em;
+    font-size: clamp(1.125rem, 0.35vw + 1.02rem, 1.3125rem);
+    font-weight: 600;
+    letter-spacing: -0.014em;
+    line-height: 1.28;
   }
 
-  /* Lead paragraphs, set in the serif for long reading. */
+  /* Paragraphs under a heading: 18/28.8. */
   .t-lead {
-    font-size: clamp(1.1875rem, 0.6vw + 1.05rem, 1.4375rem);
-    font-weight: 400;
-    line-height: 1.46;
-    letter-spacing: -0.006em;
+    font-size: clamp(1rem, 0.3vw + 0.93rem, 1.125rem);
+    line-height: 1.6;
   }
 
   .t-title {
-    font-size: 1.0625rem;
+    color: var(--text-2);
+    font-size: 1.125rem;
     font-weight: 600;
-    line-height: 1.3;
-    letter-spacing: -0.012em;
+    letter-spacing: -0.008em;
+    line-height: 1.45;
   }
 
   .t-body-lg {
-    font-size: clamp(1.0625rem, 0.4vw + 0.975rem, 1.25rem);
-    line-height: 1.47;
-    letter-spacing: -0.008em;
+    font-size: clamp(1rem, 0.3vw + 0.93rem, 1.125rem);
+    line-height: 1.6;
   }
 
   .t-body-sm {
     font-size: 0.875rem;
-    line-height: 1.43;
-    letter-spacing: -0.003em;
+    line-height: 1.4;
   }
 
   .t-caption {
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     line-height: 1.4;
-    letter-spacing: 0.01em;
   }
 
-  .t-eyebrow {
-    color: var(--accent);
-    font-size: 1rem;
+  /* The serif label above a heading, and inside fact boxes. */
+  .t-eyebrow,
+  .sec-label {
+    color: var(--text-1);
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-size: clamp(1.25rem, 0.5vw + 1.1rem, 1.5rem);
     font-weight: 500;
-    line-height: 1.35;
+    letter-spacing: -0.005em;
+    line-height: 1.1;
   }
 
   .numeral {
     color: var(--accent);
     display: block;
-    font-size: 1.625rem;
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-size: 1.5rem;
     font-weight: 500;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.02em;
     line-height: 1;
+  }
+
+  /* A phrase of a heading in the accent colour. Used twice on the page. */
+  .accent {
+    color: var(--accent);
   }
 
   /* ---------- Layout ---------- */
 
   .wrap {
-    width: min(100% - 2 * var(--gutter), 75rem);
     margin-inline: auto;
+    width: min(100% - 2 * var(--gutter), 80rem);
   }
 
   .section {
     padding-block: var(--section);
   }
 
-  /* A section label beside its heading and prose. Stacked below desktop. */
-  .sec {
+  /* A section's label, heading and paragraph, centred above its content. */
+  .sec-head {
     display: grid;
-    gap: 1rem;
+    justify-items: center;
+    text-align: center;
   }
 
-  .sec-label {
-    color: var(--accent);
-    font-size: 0.9375rem;
-    font-weight: 500;
-    letter-spacing: -0.005em;
-    line-height: 1.4;
+  .sec-head .t-heading {
+    margin-top: 0.875rem;
+    max-width: 46rem;
   }
 
-  @media (min-width: 66.75rem) {
-    .sec {
-      column-gap: 3.5rem;
-      grid-template-columns: 12.5rem minmax(0, 1fr);
-    }
+  .sec-head .t-lead {
+    margin-top: 1.25rem;
+    max-width: 40rem;
+  }
 
-    /* The label stays in view while its section is read. */
-    .sec-label {
-      align-self: start;
-      padding-top: 0.75rem;
-      position: sticky;
-      top: 4.75rem;
-    }
+  /* Left-aligned variant, for a heading that sits beside its content. */
+  .sec-head.is-start {
+    justify-items: start;
+    text-align: left;
+  }
+
+  .sec-body {
+    margin-top: clamp(2.5rem, 4.4vw, 4rem);
   }
 
   .rule {
@@ -250,27 +281,33 @@
     border-top: 1px solid var(--hair-strong);
   }
 
-  /* Label and value rows, used for facts that are better read than sold. */
+  /* Label and value rows, for facts that are better read than sold. */
   .ledger > div {
     align-items: baseline;
-    border-top: 1px solid var(--hair-strong);
+    border-top: 1px solid var(--hair);
     display: flex;
+    font-size: 1rem;
     gap: 1.5rem;
     justify-content: space-between;
-    padding-block: 0.9375rem;
+    line-height: 1.4;
+    padding-block: 0.75rem;
+  }
+
+  .ledger > div:first-child {
+    border-top: 0;
+    padding-top: 0;
   }
 
   .ledger > div:last-child {
-    border-bottom: 1px solid var(--hair-strong);
+    padding-bottom: 0;
   }
 
   .ledger dt {
-    color: var(--text-2);
+    color: var(--text-3);
   }
 
   .ledger dd {
     font-weight: 500;
-    letter-spacing: -0.01em;
     text-align: right;
   }
 
@@ -278,17 +315,21 @@
 
   .btn {
     align-items: center;
-    border-radius: 980px;
+    border: 2px solid transparent;
+    border-radius: var(--radius-5);
     cursor: pointer;
     display: inline-flex;
-    font-size: 1.0625rem;
+    font-size: 1rem;
     font-weight: 500;
+    gap: 0.5rem;
     justify-content: center;
-    letter-spacing: -0.01em;
-    line-height: 1.18;
-    padding: 0.8125rem 1.5rem;
+    letter-spacing: -0.02em;
+    line-height: 1.3125;
+    padding: 0.625rem 1.25rem;
     transition:
-      background-color 0.3s var(--ease-apple),
+      background-color 0.25s var(--ease-apple),
+      border-color 0.25s var(--ease-apple),
+      color 0.25s var(--ease-apple),
       transform 0.2s var(--ease-apple);
     white-space: nowrap;
   }
@@ -298,53 +339,87 @@
   }
 
   .btn-sm {
-    font-size: 0.875rem;
-    padding: 0.5rem 0.9375rem;
+    padding: 0.375rem 1.125rem;
   }
 
   .btn-primary {
-    background: var(--color-alma);
+    background: var(--color-night);
+    border-color: var(--color-night);
     color: #fff;
   }
 
   .btn-primary:hover {
-    background: var(--color-alma-hover);
+    background: #3a383d;
+    border-color: #3a383d;
   }
 
+  .btn-outline {
+    background: #fff;
+    border-color: var(--color-night);
+    color: var(--color-night);
+  }
+
+  .btn-outline:hover {
+    background: var(--color-night);
+    color: #fff;
+  }
+
+  /* On a dark band. */
   .btn-light {
-    background: var(--color-snow);
-    color: var(--color-ink);
+    background: #fff;
+    border-color: #fff;
+    color: var(--color-night);
   }
 
   .btn-light:hover {
-    background: #fff;
+    background: var(--color-kraft);
+    border-color: var(--color-kraft);
   }
 
   .text-link {
     color: var(--accent);
-    font-weight: 500;
-    text-decoration: underline;
-    text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.24em;
-    transition:
-      color 0.2s var(--ease-apple),
-      text-decoration-color 0.2s var(--ease-apple);
+    transition: color 0.2s var(--ease-apple);
   }
 
   .text-link:hover {
-    color: var(--accent-hover);
-    text-decoration-color: currentColor;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+  }
+
+  /* "Label, then an arrow". The arrow moves on hover. */
+  .arrow-link {
+    align-items: center;
+    color: var(--text-1);
+    display: inline-flex;
+    font-size: 1.125rem;
+    font-weight: 500;
+    gap: 0.5rem;
+    letter-spacing: -0.012em;
+    line-height: 1.2;
+  }
+
+  .arrow-link svg {
+    flex: none;
+    height: 1rem;
+    transition: transform 0.25s var(--ease-apple);
+    width: 1rem;
+  }
+
+  .arrow-link:hover svg {
+    transform: translateX(3px);
   }
 
   .chip {
+    background: #fff;
     border: 1px solid var(--hair-strong);
-    border-radius: 980px;
+    border-radius: var(--radius-5);
     color: var(--text-1);
     cursor: pointer;
     flex: none;
     font-size: 0.9375rem;
     font-weight: 500;
+    letter-spacing: -0.012em;
     line-height: 1.2;
     padding: 0.625rem 1.125rem;
     transition:
@@ -354,307 +429,288 @@
   }
 
   .chip:hover {
-    border-color: var(--text-2);
+    border-color: var(--color-night);
   }
 
   .chip[aria-selected="true"] {
-    background: var(--text-1);
-    border-color: var(--text-1);
-    color: var(--color-ink);
+    background: var(--color-night);
+    border-color: var(--color-night);
+    color: #fff;
   }
 
   .check {
-    color: var(--accent);
+    color: var(--color-alma);
     flex: none;
     height: 1.25rem;
-    margin-top: 0.125rem;
+    margin-top: 0.1875rem;
     width: 1.25rem;
   }
 
   /* ---------- Navigation ---------- */
 
   .site-nav {
+    background: #fff;
     border-bottom: 1px solid transparent;
     position: sticky;
     top: 0;
-    transition:
-      background-color 0.3s var(--ease-apple),
-      border-color 0.3s var(--ease-apple);
+    transition: border-color 0.3s var(--ease-apple);
     z-index: 50;
   }
 
   .site-nav.is-solid {
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
-    background: rgb(251 251 253 / 0.8);
     border-bottom-color: var(--hair);
   }
 
+  .site-nav-bar {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    height: 3.5rem;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 45.875rem) {
+    .site-nav-bar {
+      height: 3.75rem;
+    }
+  }
+
   .wordmark {
-    font-family: var(--font-display);
-    font-optical-sizing: auto;
     font-size: 1.75rem;
-    font-weight: 500;
-    letter-spacing: -0.035em;
+    font-weight: 700;
+    letter-spacing: -0.04em;
     line-height: 1;
   }
 
   .nav-link {
     color: var(--text-1);
-    font-size: 0.875rem;
-    letter-spacing: -0.01em;
-    opacity: 0.8;
-    transition: opacity 0.2s var(--ease-apple);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: -0.012em;
+    transition: color 0.2s var(--ease-apple);
   }
 
   .nav-link:hover {
-    opacity: 1;
+    color: var(--accent);
   }
 
-  /* ---------- Hero object: a magazine cover and a library search panel ---------- */
+  /* ---------- Hero: one illustrated card with the page title over its sky ---------- */
 
-  /* Phone: the search panel sits under the cover. Tablet: beside it.
-     Desktop: it overlaps the cover's left edge. */
-  .hero-object {
-    margin-inline: auto;
-    position: relative;
-    width: min(100%, 21rem);
+  .hero {
+    padding-top: clamp(0.375rem, 1.4vw, 1.25rem);
   }
 
-  .cover {
-    aspect-ratio: 3 / 4;
-    background: #d8d0c2;
-    border-radius: 5px;
-    box-shadow:
-      0 1px 1px rgb(0 0 0 / 0.1),
-      0 32px 70px -24px rgb(0 0 0 / 0.42);
-    color: var(--color-ink);
-    container-type: inline-size;
+  .hero-card {
+    background: #b9d0ea;
+    border-radius: var(--radius-4);
+    display: grid;
     isolation: isolate;
+    min-height: clamp(37.5rem, 50vw, 45rem);
     overflow: hidden;
     position: relative;
   }
 
-  /* Paper haze under the cover lines, and a soft spine on the left edge. */
-  .cover::after {
-    background:
-      linear-gradient(to right, rgb(0 0 0 / 0.16), rgb(0 0 0 / 0) 3.5%),
-      linear-gradient(
-        to top,
-        rgb(251 250 247 / 0.9) 0%,
-        rgb(251 250 247 / 0.62) 17%,
-        rgb(251 250 247 / 0) 40%
-      );
-    content: "";
-    inset: 0;
-    pointer-events: none;
-    position: absolute;
-    z-index: 1;
+  .hero-art {
+    object-fit: cover;
+    object-position: 50% 100%;
+    z-index: -1;
   }
 
-  .cover-masthead {
-    align-items: flex-start;
-    display: flex;
-    justify-content: space-between;
-    left: 7cqi;
-    position: absolute;
-    right: 7cqi;
-    top: 6cqi;
-    z-index: 2;
-  }
-
-  .cover-name {
-    font-family: var(--font-display);
-    font-optical-sizing: auto;
-    font-size: 25cqi;
-    font-weight: 500;
-    letter-spacing: -0.045em;
-    line-height: 0.74;
-  }
-
-  .cover-kicker {
-    font-size: 3.1cqi;
-    font-weight: 500;
-    letter-spacing: -0.005em;
-    line-height: 1.25;
-    padding-top: 0.6cqi;
-    text-align: right;
-  }
-
-  .cover-lines {
-    bottom: 6.5cqi;
-    left: 7cqi;
-    position: absolute;
-    right: 7cqi;
-    z-index: 2;
-  }
-
-  .cover-lead {
-    font-family: var(--font-display);
-    font-optical-sizing: auto;
-    font-size: 8.4cqi;
-    font-weight: 500;
-    letter-spacing: -0.025em;
-    line-height: 1;
-  }
-
-  .cover-list {
-    border-top: 1px solid rgb(29 29 31 / 0.35);
-    display: flex;
-    font-size: 3.1cqi;
-    font-weight: 500;
-    gap: 4.5cqi;
-    letter-spacing: -0.005em;
-    line-height: 1.25;
-    margin-top: 3.6cqi;
-    padding-top: 2.6cqi;
-  }
-
-  .finder {
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
-    background: rgb(255 255 255 / 0.92);
-    border-radius: 18px;
-    box-shadow:
-      0 0 0 1px rgb(0 0 0 / 0.05),
-      0 18px 48px -14px rgb(0 0 0 / 0.3);
-    color: var(--color-ink);
-    margin-top: 0.875rem;
-    padding: 1rem 1.0625rem 0.9375rem;
-    position: relative;
-    z-index: 3;
-  }
-
-  .finder-title {
-    color: var(--color-ink-2);
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.005em;
-  }
-
-  .finder-query {
+  .hero-copy {
     align-items: center;
-    background: var(--color-mist);
-    border-radius: 10px;
     display: flex;
-    font-size: 0.8125rem;
+    flex-direction: column;
+    padding: clamp(3.5rem, 6.7vw, 6rem) clamp(1rem, 4vw, 3rem) 2rem;
+    text-align: center;
+  }
+
+  .hero-copy .t-hero {
+    max-width: 15.5em;
+  }
+
+  .hero-lead {
+    font-size: clamp(1rem, 0.3vw + 0.93rem, 1.125rem);
     font-weight: 500;
-    gap: 0.5rem;
-    letter-spacing: -0.01em;
-    line-height: 1.25;
-    margin-top: 0.625rem;
-    padding: 0.5625rem 0.6875rem;
+    line-height: 1.5;
+    margin-top: clamp(1rem, 1.7vw, 1.5rem);
+    max-width: 39rem;
   }
 
-  .finder-query svg {
-    color: var(--color-ink-2);
-    flex: none;
-    height: 0.875rem;
-    width: 0.875rem;
+  .hero-cta {
+    margin-top: clamp(1.5rem, 2.3vw, 2rem);
+    padding-block: 0.75rem;
   }
 
-  .finder-list {
-    display: grid;
-    gap: 0.625rem;
-    margin-top: 0.8125rem;
+  @media (max-width: 29.99rem) {
+    .hero-cta {
+      width: 100%;
+    }
   }
 
-  .finder-row {
+  /* ---------- Case-study strip, directly under the hero ---------- */
+
+  .case-strip {
+    padding-block: clamp(1.75rem, 3.4vw, 3rem);
+  }
+
+  .case-grid {
     align-items: center;
     display: grid;
-    gap: 0.6875rem;
-    grid-template-columns: 2rem minmax(0, 1fr) auto;
+    gap: 1.125rem 1.5rem;
+    grid-template-columns: minmax(0, 1fr) auto;
   }
 
-  .finder-face {
-    background: var(--color-mist);
-    border-radius: 50%;
-    height: 2rem;
-    overflow: hidden;
-    position: relative;
-    width: 2rem;
-  }
-
-  .finder-lines {
-    display: grid;
-    gap: 0.3125rem;
-  }
-
-  .finder-lines span {
-    background: var(--color-ink);
-    border-radius: 99px;
-    display: block;
-    height: 0.3125rem;
-    opacity: 0.16;
-  }
-
-  .finder-lines span:first-child {
-    height: 0.375rem;
-    opacity: 0.8;
-  }
-
-  .finder-kind {
-    background: rgb(27 63 160 / 0.08);
-    border-radius: 99px;
-    color: var(--color-alma);
-    font-size: 0.6875rem;
+  .case-label {
+    font-size: 1.125rem;
     font-weight: 600;
-    line-height: 1;
-    padding: 0.3125rem 0.5625rem;
+    letter-spacing: -0.012em;
+    line-height: 1.3;
   }
 
-  .finder-foot {
-    border-top: 1px solid rgb(0 0 0 / 0.08);
-    color: var(--color-ink-2);
-    font-size: 0.75rem;
-    margin-top: 0.875rem;
-    padding-top: 0.6875rem;
+  /* Biola's logo: never smaller than 96px wide, never inside a shape, and
+     kept clear of other elements by half the height of its circle mark. */
+  .case-logo {
+    display: block;
+    height: 2.25rem;
+    width: auto;
   }
 
-  @media (min-width: 45.875rem) {
-    .hero-object {
-      align-items: center;
-      display: grid;
-      gap: 1.5rem;
-      grid-template-columns: minmax(0, 1fr) 17.5rem;
-      width: min(100%, 40.5rem);
-    }
+  .case-name {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
 
-    .finder {
-      margin-top: 0;
-    }
+  .case-text {
+    color: var(--text-2);
+    font-size: 1rem;
+    grid-column: 1 / -1;
+    line-height: 1.5;
+    max-width: 36rem;
+  }
+
+  .case-grid .arrow-link {
+    grid-column: 1 / -1;
+    justify-self: start;
   }
 
   @media (min-width: 66.75rem) {
-    .hero-object {
-      display: block;
-      margin-inline: auto 0;
-      width: min(100%, 25.5rem);
+    .case-grid {
+      column-gap: clamp(2rem, 3.4vw, 3.5rem);
+      grid-template-columns: auto auto minmax(0, 1fr) auto;
     }
 
-    .finder {
-      left: -8rem;
-      padding: 1.125rem 1.1875rem 1rem;
-      position: absolute;
-      top: 6.25rem;
-      width: 18rem;
+    .case-logo {
+      height: 2.75rem;
+    }
+
+    .case-text,
+    .case-grid .arrow-link {
+      grid-column: auto;
+    }
+
+    .case-grid .arrow-link {
+      justify-self: end;
     }
   }
 
-  /* The one orchestrated moment: the cover settles, then the search results arrive. */
-  @media (prefers-reduced-motion: no-preference) {
-    .cover {
-      animation: cover-in 1.3s var(--ease-apple) 0.05s backwards;
-    }
+  /* ---------- Cards and media ---------- */
 
-    .finder {
-      animation: card-in 0.9s var(--ease-apple) 0.55s backwards;
-    }
+  /* A stacked row: title and one or two sentences. The first can carry the accent. */
+  .row-card {
+    background: var(--color-mist);
+    border-radius: var(--radius-2);
+    padding: 1.125rem 1.5rem 1.25rem;
+  }
 
-    .finder-row {
-      animation: row-in 0.6s var(--ease-apple) calc(1.15s + var(--i) * 0.2s)
-        backwards;
-    }
+  .row-card h3 {
+    color: var(--color-ink-2);
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.45;
+  }
+
+  .row-card p {
+    color: var(--color-ink-2);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    margin-top: 0.25rem;
+  }
+
+  .row-card.is-accent {
+    background: var(--color-alma);
+  }
+
+  .row-card.is-accent h3,
+  .row-card.is-accent p {
+    color: #fff;
+  }
+
+  .stage-card {
+    background: var(--color-mist);
+    border-radius: var(--radius-2);
+    height: 100%;
+    padding: 1.5rem 1.5rem 1.75rem;
+  }
+
+  .media {
+    background: var(--color-sand);
+    border-radius: var(--radius-3);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: var(--radius-4);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* A bordered box of facts, with a serif label over each group. */
+  .fact-box {
+    border: 1px solid var(--color-sand);
+    border-radius: var(--radius-4);
+    display: grid;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .fact-label {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+
+  .fact-sub {
+    color: var(--text-3);
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    margin-top: 0.3125rem;
+  }
+
+  /* ---------- Paper ---------- */
+
+  /* The torn edge between two bands. The SVG is drawn in Torn.tsx. */
+  .torn {
+    display: block;
+    height: clamp(1.75rem, 3.4vw, 3rem);
+    margin-bottom: -1px;
+    width: 100%;
+  }
+
+  /* A sheet of paper that shows behind a card. Its outline comes from Torn.tsx. */
+  .paper-sheet {
+    background-color: var(--color-kraft);
+    background-image: var(--grain);
+    pointer-events: none;
+    position: absolute;
   }
 
   /* ---------- Scroll reveal ---------- */
@@ -662,10 +718,10 @@
   @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
     .reveal {
       opacity: 0;
-      transform: translateY(24px);
+      transform: translateY(20px);
       transition:
-        opacity 0.9s var(--ease-apple),
-        transform 0.9s var(--ease-apple);
+        opacity 0.8s var(--ease-apple),
+        transform 0.8s var(--ease-apple);
     }
 
     .reveal.is-visible {
@@ -678,13 +734,55 @@
 
   .person-photo {
     aspect-ratio: 4 / 5;
-    background: var(--color-mist);
-    border-radius: 10px;
+    background: var(--color-sand);
+    border-radius: var(--radius-3);
+    box-shadow: var(--shadow-card);
     overflow: hidden;
     position: relative;
   }
 
+  /* ---------- Purpose: a heading beside a stack of rows ---------- */
+
+  .split {
+    display: grid;
+    gap: clamp(2rem, 4.4vw, 4rem);
+  }
+
+  @media (min-width: 66.75rem) {
+    .split {
+      align-items: start;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .split-head {
+      position: sticky;
+      top: 6.5rem;
+    }
+  }
+
   /* ---------- Story library: a grid of interface examples ---------- */
+
+  /* A soft band of colour at the top of a section. It is its own element,
+     not a pseudo-element, so that contrast checks can still read the section. */
+  .band-glow {
+    isolation: isolate;
+    position: relative;
+  }
+
+  .glow {
+    background:
+      radial-gradient(36% 70% at 10% 0%, rgb(172 212 241 / 0.6), transparent 72%),
+      radial-gradient(30% 62% at 36% 0%, rgb(255 204 204 / 0.5), transparent 72%),
+      radial-gradient(30% 62% at 62% 0%, rgb(243 179 14 / 0.2), transparent 72%),
+      radial-gradient(36% 70% at 90% 0%, rgb(166 219 165 / 0.5), transparent 72%);
+    height: clamp(12rem, 22vw, 20rem);
+    inset: 0 0 auto;
+    -webkit-mask-image: linear-gradient(to bottom, #000 10%, transparent);
+    mask-image: linear-gradient(to bottom, #000 10%, transparent);
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+  }
 
   .bento {
     display: grid;
@@ -705,9 +803,10 @@
   }
 
   .tile {
-    background: #161617;
-    border: 1px solid rgb(255 255 255 / 0.09);
-    border-radius: 22px;
+    background: #fff;
+    border-radius: var(--radius-4);
+    box-shadow: var(--shadow-card);
+    color: var(--color-ink);
     display: flex;
     flex-direction: column;
     gap: 1.375rem;
@@ -715,12 +814,26 @@
     padding: clamp(1.25rem, 2.2vw, 1.75rem);
   }
 
+  .tile .t-title {
+    color: var(--color-ink);
+  }
+
   .tile-body {
-    color: var(--color-snow-2);
+    color: var(--color-ink-2);
     font-size: 0.9375rem;
-    line-height: 1.45;
+    line-height: 1.5;
     margin-top: 0.4375rem;
     max-width: 34rem;
+  }
+
+  /* The large tile is the accent card. Its interface panel stays white. */
+  .tile-ask {
+    background: var(--color-alma);
+    color: #fff;
+  }
+
+  .tile-ask .tile-body {
+    color: rgb(255 255 255 / 0.88);
   }
 
   /* The interface drawing sits at the foot of its tile. */
@@ -736,13 +849,19 @@
 
   /* A panel of interface inside a tile. */
   .ui {
-    background: rgb(255 255 255 / 0.04);
-    border: 1px solid rgb(255 255 255 / 0.08);
-    border-radius: 14px;
-    color: var(--color-snow);
+    background: var(--color-mist);
+    border: 1px solid var(--color-line);
+    border-radius: 10px;
+    color: var(--color-ink);
     font-size: 0.8125rem;
     line-height: 1.35;
     padding: 0.9375rem;
+  }
+
+  .tile-ask .ui {
+    background: #fff;
+    border-color: transparent;
+    box-shadow: 0 10px 30px rgb(10 7 13 / 0.18);
   }
 
   .ui-flush {
@@ -750,7 +869,7 @@
   }
 
   .ui-label {
-    color: var(--color-snow-2);
+    color: var(--color-ink-3);
     font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.005em;
@@ -762,18 +881,18 @@
     border-radius: 99px;
     display: block;
     height: 0.375rem;
-    opacity: 0.2;
+    opacity: 0.14;
   }
 
   .bar-strong {
     height: 0.4375rem;
-    opacity: 0.75;
+    opacity: 0.72;
   }
 
   .pill {
-    background: rgb(255 255 255 / 0.09);
+    background: rgb(10 7 13 / 0.06);
     border-radius: 99px;
-    color: var(--color-snow);
+    color: var(--color-ink);
     flex: none;
     font-size: 0.75rem;
     font-weight: 500;
@@ -783,14 +902,14 @@
   }
 
   .pill-accent {
-    background: rgb(143 176 255 / 0.16);
-    color: #c3d3ff;
+    background: rgb(71 127 69 / 0.12);
+    color: #2f6a2d;
   }
 
   .cite {
-    background: rgb(143 176 255 / 0.16);
+    background: rgb(61 76 240 / 0.1);
     border-radius: 5px;
-    color: var(--color-alma-sky);
+    color: var(--color-alma);
     flex: none;
     font-size: 0.6875rem;
     font-weight: 600;
@@ -802,9 +921,9 @@
 
   .ask-query {
     align-items: flex-start;
-    background: rgb(255 255 255 / 0.07);
-    border: 1px solid rgb(255 255 255 / 0.16);
-    border-radius: 12px;
+    background: #fff;
+    border: 1.5px solid var(--color-alma);
+    border-radius: 10px;
     display: flex;
     font-size: 0.9375rem;
     font-weight: 500;
@@ -816,7 +935,7 @@
   }
 
   .ask-query svg {
-    color: var(--color-snow-2);
+    color: var(--color-ink-3);
     flex: none;
     height: 1rem;
     margin-top: 0.125rem;
@@ -839,7 +958,7 @@
   }
 
   .ask-caret {
-    background: var(--color-alma-sky);
+    background: var(--color-alma);
     display: inline-block;
     height: 1.05em;
     margin-left: 1px;
@@ -874,7 +993,7 @@
 
   .ask-source {
     align-items: center;
-    border-top: 1px solid rgb(255 255 255 / 0.08);
+    border-top: 1px solid var(--color-line);
     display: grid;
     gap: 0.75rem;
     grid-template-columns: 0.625rem 2.5rem minmax(0, 1fr) auto;
@@ -890,14 +1009,14 @@
   }
 
   .ask-num {
-    color: var(--color-alma-sky);
+    color: var(--color-alma);
     font-size: 0.75rem;
     font-weight: 600;
   }
 
   .ask-face {
     aspect-ratio: 1;
-    background: rgb(255 255 255 / 0.08);
+    background: var(--color-sand);
     border-radius: 8px;
     overflow: hidden;
     position: relative;
@@ -928,8 +1047,8 @@
   }
 
   .tile-ask .ask-source {
-    grid-template-columns: 0.625rem 3.5rem minmax(0, 1fr) auto;
-    padding-block: 0.9375rem;
+    grid-template-columns: 0.625rem 4rem minmax(0, 1fr) auto;
+    padding-block: 1.1875rem;
   }
 
   .tile-ask .ask-sources {
@@ -938,7 +1057,7 @@
 
   .ask-refine {
     align-items: center;
-    border-top: 1px solid rgb(255 255 255 / 0.08);
+    border-top: 1px solid var(--color-line);
     display: flex;
     flex-wrap: wrap;
     gap: 0.375rem 0.5rem;
@@ -957,8 +1076,8 @@
 
   .rec-avatar {
     aspect-ratio: 1;
-    background: rgb(143 176 255 / 0.16);
-    border: 1px solid rgb(143 176 255 / 0.3);
+    background: rgb(61 76 240 / 0.1);
+    border: 1px solid rgb(61 76 240 / 0.28);
     border-radius: 50%;
   }
 
@@ -967,7 +1086,7 @@
   }
 
   .rec-row {
-    border-top: 1px solid rgb(255 255 255 / 0.08);
+    border-top: 1px solid var(--color-line);
     display: flex;
     gap: 1rem;
     justify-content: space-between;
@@ -975,7 +1094,7 @@
   }
 
   .rec-row dt {
-    color: var(--color-snow-2);
+    color: var(--color-ink-3);
     flex: none;
   }
 
@@ -985,7 +1104,7 @@
   }
 
   .rec-tags {
-    border-top: 1px solid rgb(255 255 255 / 0.08);
+    border-top: 1px solid var(--color-line);
     display: flex;
     flex-wrap: wrap;
     gap: 0.375rem;
@@ -993,9 +1112,9 @@
   }
 
   .tag {
-    background: rgb(143 176 255 / 0.14);
+    background: rgb(61 76 240 / 0.09);
     border-radius: 99px;
-    color: #c3d3ff;
+    color: var(--color-alma);
     font-size: 0.75rem;
     font-weight: 500;
     line-height: 1.2;
@@ -1006,10 +1125,10 @@
 
   .facet-search {
     align-items: center;
-    background: rgb(255 255 255 / 0.07);
-    border: 1px solid rgb(255 255 255 / 0.14);
+    background: #fff;
+    border: 1px solid var(--color-line);
     border-radius: 10px;
-    color: var(--color-snow-2);
+    color: var(--color-ink-3);
     display: flex;
     gap: 0.5rem;
     padding: 0.5625rem 0.75rem;
@@ -1030,7 +1149,7 @@
   }
 
   .facet-label {
-    color: var(--color-snow-2);
+    color: var(--color-ink-3);
     font-size: 0.75rem;
     font-weight: 500;
   }
@@ -1042,7 +1161,8 @@
   }
 
   .f-chip {
-    border: 1px solid rgb(255 255 255 / 0.14);
+    background-color: #fff;
+    border: 1px solid var(--hair-strong);
     border-radius: 99px;
     font-size: 0.75rem;
     font-weight: 500;
@@ -1051,9 +1171,9 @@
   }
 
   .f-chip.is-on {
-    background-color: rgb(143 176 255 / 0.18);
-    border-color: rgb(143 176 255 / 0.5);
-    color: #c9d7ff;
+    background-color: rgb(61 76 240 / 0.1);
+    border-color: rgb(61 76 240 / 0.55);
+    color: var(--color-alma);
   }
 
   .range-wrap {
@@ -1064,14 +1184,14 @@
   }
 
   .range {
-    background: rgb(255 255 255 / 0.12);
+    background: rgb(10 7 13 / 0.1);
     border-radius: 99px;
     height: 0.25rem;
     position: relative;
   }
 
   .range-bar {
-    background: var(--color-alma-sky);
+    background: var(--color-alma);
     border-radius: 99px;
     bottom: 0;
     left: 34%;
@@ -1083,13 +1203,14 @@
   .range-bar::before,
   .range-bar::after {
     background: #fff;
+    border: 2px solid var(--color-alma);
     border-radius: 50%;
     content: "";
-    height: 0.625rem;
+    height: 0.75rem;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 0.625rem;
+    width: 0.75rem;
   }
 
   .range-bar::before {
@@ -1110,7 +1231,7 @@
 
   .cal-row {
     align-items: center;
-    border-radius: 10px;
+    border-radius: 8px;
     display: grid;
     gap: 0.75rem;
     grid-template-columns: minmax(0, 1fr) auto;
@@ -1118,7 +1239,7 @@
   }
 
   .cal-when {
-    color: var(--color-snow-2);
+    color: var(--color-ink-3);
     display: block;
     font-size: 0.75rem;
   }
@@ -1148,23 +1269,23 @@
 
   .decade-bar {
     align-self: end;
-    background: rgb(143 176 255 / 0.6);
+    background: var(--color-alma-sky);
     border-radius: 5px 5px 2px 2px;
     height: var(--h);
     transform-origin: bottom;
   }
 
   .decade-label {
-    color: var(--color-snow-2);
+    color: var(--color-ink-3);
     font-size: 0.6875rem;
     text-align: center;
   }
 
   .priv-badge {
     align-items: center;
-    background: rgb(143 176 255 / 0.14);
+    background: rgb(61 76 240 / 0.09);
     border-radius: 99px;
-    color: #c3d3ff;
+    color: var(--color-alma);
     display: inline-flex;
     font-size: 0.75rem;
     font-weight: 500;
@@ -1258,7 +1379,7 @@
   }
 
   .faq-icon {
-    color: var(--text-2);
+    color: var(--text-1);
     flex: none;
     height: 1.25rem;
     transition: transform 0.3s var(--ease-apple);
@@ -1271,67 +1392,128 @@
 
   .faq-answer {
     color: var(--text-2);
-    max-width: 40rem;
+    max-width: 42rem;
     padding-bottom: 1.5rem;
+  }
+
+  /* ---------- Our story: a card of text over a sheet of paper, beside photographs ---------- */
+
+  .story-grid {
+    display: grid;
+    gap: 1.5rem;
+    position: relative;
+  }
+
+  /* The column holds the card and the sheet of paper behind its top corner. */
+  .story-col {
+    padding-top: 1.5rem;
+    position: relative;
+  }
+
+  .story-sheet {
+    height: 6.5rem;
+    left: -0.5rem;
+    top: 0;
+    transform: rotate(-2deg);
+    width: 66%;
+  }
+
+  .story-card {
+    padding: clamp(1.75rem, 5vw, 4rem) clamp(1.25rem, 4.4vw, 4rem);
+    position: relative;
+  }
+
+  .story-photos {
+    display: grid;
+    gap: 1rem;
+  }
+
+  @media (min-width: 45.875rem) and (max-width: 66.74rem) {
+    .story-photos {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 66.75rem) {
+    .story-grid {
+      align-items: start;
+      gap: 0;
+      grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+    }
+
+    /* The card overlaps the photographs a little, as a sheet laid over them. */
+    .story-col {
+      margin-right: -2.5rem;
+      padding-top: 4rem;
+      z-index: 2;
+    }
+
+    .story-sheet {
+      height: 10rem;
+      left: -1.75rem;
+      top: 1.25rem;
+      width: 62%;
+    }
+
+    .story-photos {
+      position: sticky;
+      top: 5.5rem;
+    }
   }
 
   /* ---------- Contact form ---------- */
 
   .field label {
-    color: var(--text-2);
+    color: var(--color-ink-2);
     display: block;
     font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.35;
     margin-bottom: 0.4375rem;
   }
 
   .field input {
-    background: rgb(255 255 255 / 0.08);
+    background: #fff;
     border: 1px solid var(--hair-strong);
-    border-radius: 12px;
-    color: var(--text-1);
-    font-size: 1.0625rem;
+    border-radius: 10px;
+    color: var(--color-ink);
+    font-size: 1rem;
     line-height: 1.3;
-    padding: 0.8125rem 0.9375rem;
-    transition:
-      border-color 0.2s var(--ease-apple),
-      background-color 0.2s var(--ease-apple);
+    padding: 0.75rem 0.875rem;
+    transition: border-color 0.2s var(--ease-apple);
     width: 100%;
   }
 
-  .field input::placeholder {
-    color: var(--text-3);
-  }
-
   .field input:hover {
-    border-color: rgb(255 255 255 / 0.34);
+    border-color: var(--color-ink-3);
   }
 
   .field input:focus-visible {
-    background: rgb(255 255 255 / 0.12);
-    border-color: var(--accent);
-    outline: 2px solid var(--accent);
+    border-color: var(--color-alma);
+    outline: 2px solid var(--color-alma);
     outline-offset: 0;
   }
-}
 
-@keyframes cover-in {
-  from {
-    opacity: 0;
-    transform: scale(0.965);
+  /* ---------- Footer ---------- */
+
+  .footer-label {
+    color: var(--color-snow-3);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 1.7;
+    text-transform: uppercase;
   }
-}
 
-@keyframes card-in {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
+  .footer-link {
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1.35;
+    transition: color 0.2s var(--ease-apple);
   }
-}
 
-@keyframes row-in {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
+  .footer-link:hover {
+    color: var(--color-amber);
   }
 }
 
@@ -1345,16 +1527,16 @@
   0%,
   36%,
   100% {
-    background-color: transparent;
-    border-color: rgb(255 255 255 / 0.14);
-    color: var(--color-snow);
+    background-color: #fff;
+    border-color: #d9d7d2;
+    color: #0a070d;
   }
 
   5%,
   30% {
-    background-color: rgb(143 176 255 / 0.18);
-    border-color: rgb(143 176 255 / 0.5);
-    color: #c9d7ff;
+    background-color: rgb(61 76 240 / 0.1);
+    border-color: rgb(61 76 240 / 0.55);
+    color: #3d4cf0;
   }
 }
 
@@ -1367,6 +1549,6 @@
 
   4%,
   22% {
-    background-color: rgb(255 255 255 / 0.07);
+    background-color: rgb(61 76 240 / 0.08);
   }
 }

@@ -19,7 +19,7 @@ export function Standards() {
       heading={standards.heading}
       lead={standards.lead}
     >
-      <div className="mt-[clamp(2.5rem,5vw,3.75rem)] grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.92fr)] lg:gap-12">
+      <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <Reveal>
           <div className="grid gap-8 sm:grid-cols-2">
             <div>
@@ -48,18 +48,18 @@ export function Standards() {
               </ul>
             </div>
           </div>
-          <p className="rule-strong mt-8 max-w-[34rem] pt-6">
+          <p className="rule-strong mt-8 max-w-[34rem] pt-6 text-ink-2">
             {standards.note}
           </p>
         </Reveal>
 
         <Reveal delay={120}>
-          <div className="relative aspect-[3/2] overflow-hidden rounded-[14px] bg-paper">
+          <div className="media aspect-[3/2]">
             <Image
               src={photos.proof.src}
               alt={standards.photoAlt}
               fill
-              sizes="(min-width: 66.75rem) 440px, 100vw"
+              sizes="(min-width: 66.75rem) 608px, 92vw"
               placeholder="blur"
               blurDataURL={photos.proof.blurDataURL}
               className="object-cover"

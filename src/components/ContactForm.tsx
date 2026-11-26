@@ -73,10 +73,10 @@ export function ContactForm({ contactEmail }: { contactEmail: string }) {
         <input id="contact-person" name="person" />
       </div>
       <div className="mt-2 flex flex-wrap items-center gap-x-5 gap-y-3 sm:col-span-2">
-        <button type="submit" className="btn btn-light">
+        <button type="submit" className="btn btn-primary">
           {cta.label}
         </button>
-        <p className="t-body-sm text-snow-2" role="status">
+        <p className="t-body-sm text-ink-3" role="status">
           {opened
             ? "Your email program should now be open. Send the message to reach us."
             : "This opens a message in your email program with these details filled in."}

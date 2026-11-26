@@ -76,28 +76,30 @@ export function Library() {
     <section
       id="library"
       aria-labelledby="library-heading"
-      className="on-dark section bg-night"
+      className="section band-glow bg-mist"
     >
+      <div className="glow" aria-hidden="true" />
       <div className="wrap">
-        <div className="sec">
+        <Reveal className="sec-head">
           <p className="sec-label">{library.label}</p>
-          <Reveal className="min-w-0">
-            <h2 id="library-heading" className="t-heading max-w-[23ch]">
-              {library.heading}
-            </h2>
-            <p className="t-lead mt-6 max-w-[41rem]">{library.lead}</p>
-          </Reveal>
-        </div>
+          <h2 id="library-heading" className="t-heading">
+            {library.heading}
+          </h2>
+          <p className="t-lead !max-w-[44rem] text-left">{library.lead}</p>
+        </Reveal>
 
-        <Reveal className="mt-[clamp(2.5rem,5vw,4rem)]">
-          <p id="library-tabs-label" className="t-body-sm text-snow-2">
+        <Reveal className="sec-body">
+          <p
+            id="library-tabs-label"
+            className="t-body-sm text-ink-3 md:text-center"
+          >
             {library.tabsLabel}
           </p>
           <div
             role="tablist"
             aria-labelledby="library-tabs-label"
             onKeyDown={onKeyDown}
-            className="-mx-[var(--gutter)] mt-3 flex gap-2.5 overflow-x-auto px-[var(--gutter)] pb-1 [scrollbar-width:none] md:mx-0 md:flex-wrap md:px-0"
+            className="-mx-[var(--gutter)] mt-3 flex gap-2.5 overflow-x-auto px-[var(--gutter)] pb-1 [scrollbar-width:none] md:mx-0 md:flex-wrap md:justify-center md:px-0"
           >
             {offices.map((item, index) => (
               <button
@@ -119,7 +121,7 @@ export function Library() {
             ))}
           </div>
 
-          <div ref={grid} className={`bento mt-5 ${live ? "is-live" : ""}`}>
+          <div ref={grid} className={`bento mt-6 ${live ? "is-live" : ""}`}>
             <div
               id="library-panel"
               role="tabpanel"
@@ -133,7 +135,12 @@ export function Library() {
                   {library.queryLabel}: {office.query}
                 </p>
               </div>
-              <Ask key={office.id} office={office} motion={motion} live={live} />
+              <Ask
+                key={office.id}
+                office={office}
+                motion={motion}
+                live={live}
+              />
             </div>
 
             <Tile
@@ -177,26 +184,28 @@ export function Library() {
             </Tile>
           </div>
 
-          <p className="t-caption mt-4 text-snow-2">{library.note}</p>
+          <p className="t-caption mt-4 text-ink-3">{library.note}</p>
         </Reveal>
 
-        <div className="sec mt-[clamp(3rem,6vw,5rem)]">
-          <h3 className="sec-label">{method.heading}</h3>
-          <Reveal className="min-w-0">
-            <ol className="grid gap-y-7 md:grid-cols-3 md:gap-x-8">
-              {method.steps.map((step, index) => (
-                <li key={step.title} className="rule-strong pt-5">
-                  <span className="numeral" aria-hidden="true">
-                    {index + 1}
-                  </span>
-                  <h4 className="t-subhead mt-3">{step.title}</h4>
-                  <p className="mt-2 text-snow-2">{step.body}</p>
-                </li>
-              ))}
-            </ol>
-            <p className="mt-8 max-w-[41rem] text-snow-2">{method.note}</p>
-          </Reveal>
-        </div>
+        <Reveal className="mt-[clamp(3.5rem,6.7vw,6rem)]">
+          <h3 id="search" className="t-display-2 scroll-mt-24 text-center">
+            {method.heading}
+          </h3>
+          <ol className="mt-8 grid gap-4 md:grid-cols-3">
+            {method.steps.map((step, index) => (
+              <li key={step.title} className="stage-card bg-paper">
+                <span className="numeral" aria-hidden="true">
+                  {index + 1}
+                </span>
+                <h4 className="t-subhead mt-4">{step.title}</h4>
+                <p className="mt-2 text-ink-2">{step.body}</p>
+              </li>
+            ))}
+          </ol>
+          <p className="mx-auto mt-8 max-w-[44rem] text-center text-ink-2">
+            {method.note}
+          </p>
+        </Reveal>
       </div>
     </section>
   );
@@ -327,7 +336,10 @@ function Ask({
                 className="bar bar-strong"
                 style={{ width: `${[74, 62, 68][index]}%` }}
               />
-              <span className="bar" style={{ width: `${[46, 52, 40][index]}%` }} />
+              <span
+                className="bar"
+                style={{ width: `${[46, 52, 40][index]}%` }}
+              />
             </span>
             <span className="pill">{result.kind}</span>
           </li>
@@ -371,7 +383,11 @@ function Record() {
       </div>
       <dl className="rec-fields">
         {record.fields.map(([label, value], index) => (
-          <div key={label} className="rec-row seq" style={vars({ "--i": index })}>
+          <div
+            key={label}
+            className="rec-row seq"
+            style={vars({ "--i": index })}
+          >
             <dt>{label}</dt>
             <dd>{value}</dd>
           </div>

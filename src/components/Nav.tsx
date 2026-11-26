@@ -26,15 +26,12 @@ export function Nav() {
 
   return (
     <header className={`site-nav ${scrolled || open ? "is-solid" : ""}`}>
-      <nav
-        aria-label="Primary"
-        className="wrap flex h-[3.25rem] items-center justify-between gap-4"
-      >
+      <nav aria-label="Primary" className="wrap site-nav-bar">
         <a href="#top" className="wordmark" aria-label="Alma, back to top">
           Alma
         </a>
 
-        <ul className="hidden items-center gap-5 md:flex lg:gap-8">
+        <ul className="hidden items-center gap-5 md:flex lg:gap-9">
           {nav.map((item) => (
             <li key={item.href}>
               <a href={item.href} className="nav-link">
@@ -71,7 +68,7 @@ export function Nav() {
             <li key={item.href} className="rule">
               <a
                 href={item.href}
-                className="block py-3.5 text-[1.0625rem] font-medium"
+                className="block py-3.5 text-[1.125rem] font-medium"
                 onClick={() => setOpen(false)}
               >
                 {item.label}

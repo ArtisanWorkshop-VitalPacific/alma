@@ -15,8 +15,26 @@ The library's own screens are not built yet. See "Story library backend" below.
 ```bash
 npm install
 npm run dev     # http://localhost:3000
-npm run build   # downloads the photographs, then builds
+npm run build   # downloads the images, then builds
 ```
+
+## Design
+
+The look follows the design system recorded from https://www.sectionai.com/ on
+2026-11-26, at Matt's request: a geometric sans for headings and text, a serif
+for small labels, white and warm off-white bands, near-black pill buttons, one
+blue accent, an amber accent on the dark closing band, and torn-paper edges.
+The measured values are in `design/tokens.json`, with a list of what was
+matched, what was substituted and what was not copied.
+
+- Typefaces: DM Sans stands in for Goga, and Newsreader for Azurio. Both of
+  Section's faces are commercial. If Alma licenses them, change `src/app/fonts.ts`.
+- Nothing of Section's own was copied: no logo, illustration, photograph, icon,
+  paper texture, copy or font file. The hero illustration and the notebook were
+  generated in Higgsfield. The torn edges are drawn in `src/components/Torn.tsx`.
+- The voice is Alma's, not Section's: full, measured sentences.
+- The earlier design (serif headings, a label column beside each section) is
+  kept at the git tag `v1-prospectus`.
 
 ## Where things live
 
@@ -25,8 +43,9 @@ npm run build   # downloads the photographs, then builds
 | All copy: headings, reasons, library panels, fees, questions | `src/content/site.ts` |
 | Section layout | `src/components/*.tsx` |
 | Colors, type scale, spacing, motion | `src/app/globals.css` (mirrored in `design/tokens.json`) |
-| Photograph list, sources and credits | `src/content/images.json` |
-| Fonts (Newsreader, Geist, both open licence) | `src/fonts/` |
+| Image list, sources and credits | `src/content/images.json` |
+| The Biola case-study strip and logo switch | `caseStudy` in `src/content/site.ts`, `src/content/partner-logo.ts` |
+| Fonts (DM Sans, Newsreader, both open licence) | `src/fonts/` |
 | Favicon, Apple icon, social share image | `src/app/icon.svg`, `apple-icon.png`, `opengraph-image.png` |
 
 ## Voice
@@ -54,21 +73,43 @@ The copy is written for senior university staff. The rules are at the top of
 | `SITE_INDEXABLE` | Set to `true` at launch. Until then the site tells search engines not to index it. |
 | `NEXT_PUBLIC_SITE_URL` | The live address, for example `https://example.com`. Used for share links. |
 
-## Photographs
+## Images
 
-No photograph is stored in the repo. `scripts/fetch-images.mjs` downloads each one
+No image is stored in the repo. `scripts/fetch-images.mjs` downloads each one
 into `public/images` before a build, using the links in `src/content/images.json`.
-A build on Vercel stops if one is missing.
+A build on Vercel stops if one is missing, unless its entry is marked optional.
 
-| Photographs | Source | Status |
+| Images | Source | Status |
 | --- | --- | --- |
-| `cover`, `proof`, `quad` | Generated in Higgsfield | Illustrative |
+| `hero`, `proof`, `notebook` | Generated in Higgsfield | Illustrative. `hero` is the illustration behind the page title. `notebook` is a transparent cutout in the closing band. |
+| `biola-logo` | Biola University's logo, as served on biola.edu | Optional entry. **Needs Biola's approval before the site is public.** See "The Biola logo" below. |
 | `biola-bell-tower`, `biola-library` | Biola University press room stock photos | Need Biola's permission before launch. Scaled down to 2400px wide at build time. Used only in the "Our story" section. The page shows no credit line (removed at Matt's request on 2026-11-26). The source is recorded in `images.json`. |
 | `portrait-1` to `portrait-7` | Unsplash (photographers are listed in `images.json`) | Stock. The page does not label them as stock. The free Unsplash licence does not include model releases. Replace with released or real portraits before launch. |
 
 To make the repo self-contained, save the files into `public/images` under the
-names in `images.json`, delete the `/public/images/*.jpg` line from `.gitignore`,
+names in `images.json`, delete the two `/public/images/` lines from `.gitignore`,
 and commit them. The script then skips the download.
+
+### The Biola logo
+
+The case-study strip under the hero and the "Our story" card show Biola
+University's logo, added at Matt's request on 2026-11-26.
+
+- Biola's brand page says that only Biola faculty, staff, eligible student
+  workers and approved external partners may use its brand assets, and that
+  outside parties request the logo files through its Google Drive folder with a
+  note about the intended use:
+  https://www.biola.edu/brand/toolkits-standards/logos
+- The file used here is the logo that biola.edu serves in its own header. It has
+  not been supplied or approved by Biola.
+- To show the university's name in text instead, set `caseStudy.logo.show` to
+  `false` in `src/content/site.ts`. The page does the same on its own if the file
+  cannot be downloaded.
+- When Biola supplies a file, save it as `public/images/biola-logo.png` (or
+  change the entry in `images.json`) and commit it.
+- The components follow Biola's logo rules: the two-colour logo on white, never
+  inside a shape, not recoloured or distorted, at least 96px wide, with clear
+  space of half the circle mark's height on every side.
 
 ## Story library backend
 
@@ -99,6 +140,7 @@ What does not exist yet:
 - Connect the domain in Vercel and set `NEXT_PUBLIC_SITE_URL`.
 - Set `SITE_INDEXABLE` to `true`.
 - Get Biola's written permission for the two campus photographs, or replace them.
+- Get Biola's approval to show its logo, or set `caseStudy.logo.show` to `false`.
 - Replace the stock portraits with released photographs, or with real portraits
   of people Alma has profiled, with their permission.
 - The story library is the software side of the business: Alma builds one for
@@ -113,13 +155,17 @@ What does not exist yet:
 ## Honest-content rules for this site
 
 - No invented testimonials, client logos, names, quotes or story excerpts.
-  Interface drawings show names and running text as bars.
+  Interface drawings show names and running text as bars. The reference design
+  shows customer quotations and before-and-after results. Alma has neither, so
+  the "Our story" card shows the facts Matt supplied instead.
 - The library panels carry one caption: "Illustration with sample data."
 - Stock portraits appear only beside a general label such as "Alumni". They are
   never given a name, a quote or a story. The page does not say that they are
   stock (removed at Matt's request on 2026-11-26).
-- Biola University is named in text only. No Biola logo is used. Its two campus
-  photographs carry no caption or credit on the page.
+- Biola University's logo appears in two places, as a factual reference to work
+  Alma has done for it. It is never placed beside a quotation or an endorsement,
+  because Alma has none from Biola. Its two campus photographs carry no caption
+  or credit on the page.
 - "No part of a profile is drafted by a language model" describes the profiles
   Alma delivers. The library's search does use a language model, and the site
   says so.

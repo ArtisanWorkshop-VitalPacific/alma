@@ -40,6 +40,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# photographs: downloaded by scripts/fetch-images.mjs at build time.
-# Delete the next line and commit the files to make the repo self-contained.
+# images: downloaded by scripts/fetch-images.mjs at build time.
+# Delete the next two lines and commit the files to make the repo self-contained.
 /public/images/*.jpg
+/public/images/*.png

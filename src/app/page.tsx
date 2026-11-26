@@ -1,4 +1,5 @@
 import { Approach } from "@/components/Approach";
+import { CaseStrip } from "@/components/CaseStrip";
 import { Contact } from "@/components/Contact";
 import { Faq } from "@/components/Faq";
 import { Fees } from "@/components/Fees";
@@ -17,6 +18,7 @@ export default function Home() {
       <Nav />
       <main id="main">
         <Hero />
+        <CaseStrip />
         <Subjects />
         <Purpose />
         <Library />

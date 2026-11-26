@@ -12,24 +12,22 @@ export function Approach() {
       label={approach.label}
       heading={approach.heading}
       lead={approach.lead}
-      wide={
-        <ol className="mt-[clamp(2.5rem,5vw,4rem)] grid gap-x-8 md:grid-cols-2 lg:grid-cols-4">
-          {approach.stages.map((stage, index) => (
-            <Reveal
-              as="li"
-              key={stage.title}
-              delay={index * 100}
-              className="rule-strong pb-9 pt-6"
-            >
+    >
+      <ol className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {approach.stages.map((stage, index) => (
+          <Reveal as="li" key={stage.title} delay={index * 90}>
+            <div className="stage-card">
               <span className="numeral" aria-hidden="true">
                 {numerals[index]}
               </span>
-              <h3 className="t-subhead mt-4">{stage.title}</h3>
-              <p className="mt-2.5 text-ink-2">{stage.body}</p>
-            </Reveal>
-          ))}
-        </ol>
-      }
-    />
+              <h3 className="t-subhead mt-5">{stage.title}</h3>
+              <p className="mt-2 text-[0.9375rem] leading-[1.55] text-ink-2">
+                {stage.body}
+              </p>
+            </div>
+          </Reveal>
+        ))}
+      </ol>
+    </Section>
   );
 }

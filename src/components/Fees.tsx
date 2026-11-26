@@ -11,12 +11,12 @@ export function Fees() {
       heading={fees.heading}
       lead={fees.lead}
     >
-      <Reveal delay={120}>
-        <dl className="mt-[clamp(2.5rem,5vw,3.75rem)] border-b border-[var(--hair-strong)]">
+      <Reveal className="mx-auto max-w-[62rem]">
+        <dl className="border-b border-[var(--hair)]">
           {fees.rows.map((row) => (
             <div
               key={row.item}
-              className="rule-strong grid gap-x-8 gap-y-1.5 py-6 md:grid-cols-[12.5rem_minmax(0,1fr)_11.5rem]"
+              className="rule grid gap-x-8 gap-y-1.5 py-6 md:grid-cols-[13rem_minmax(0,1fr)_11.5rem]"
             >
               <dt className="t-subhead">{row.item}</dt>
               <dd className="max-w-[34rem] text-ink-2">{row.detail}</dd>
@@ -26,8 +26,8 @@ export function Fees() {
             </div>
           ))}
         </dl>
-        <p className="mt-8">
-          <a href={cta.href} className="text-link">
+        <p className="mt-10 text-center">
+          <a href={cta.href} className="btn btn-primary">
             {cta.label}
           </a>
         </p>

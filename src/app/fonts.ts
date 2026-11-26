@@ -1,8 +1,21 @@
 import localFont from "next/font/local";
 
 /**
- * Newsreader (display). A news serif with an optical-size axis, so large
- * headlines pick up the finer display cut automatically.
+ * DM Sans (headings, text and interface). It has an optical-size axis, so
+ * large headings pick up the tighter display cut automatically.
+ */
+export const dmSans = localFont({
+  src: "../fonts/DMSans-opsz.woff2",
+  variable: "--font-dm-sans",
+  weight: "100 1000",
+  style: "normal",
+  display: "swap",
+  adjustFontFallback: "Arial",
+});
+
+/**
+ * Newsreader (serif accent): the small labels above headings and the labels
+ * inside fact boxes.
  */
 export const newsreader = localFont({
   src: "../fonts/Newsreader-opsz.woff2",
@@ -11,14 +24,4 @@ export const newsreader = localFont({
   style: "normal",
   display: "swap",
   adjustFontFallback: "Times New Roman",
-});
-
-/** Geist (text and interface). */
-export const geist = localFont({
-  src: "../fonts/Geist-Variable.woff2",
-  variable: "--font-geist",
-  weight: "100 900",
-  style: "normal",
-  display: "swap",
-  adjustFontFallback: "Arial",
 });

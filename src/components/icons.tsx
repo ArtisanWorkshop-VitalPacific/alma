@@ -90,3 +90,17 @@ export function Lock(props: IconProps) {
     </svg>
   );
 }
+
+export function Arrow(props: IconProps) {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
+      <path
+        d="M2.5 8h10.5M8.75 3.75L13 8l-4.25 4.25"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}

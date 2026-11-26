@@ -1,12 +1,17 @@
-// Puts the site's photographs in public/images before a build.
+// Puts the site's images in public/images before a build.
 //
-// The photographs are listed in src/content/images.json with their sources
-// and credits. A file that already exists in public/images is left alone, so
+// The images are listed in src/content/images.json with their sources and
+// credits. A file that already exists in public/images is left alone, so
 // committing the images there makes the repo self-contained and this script
 // becomes a no-op.
 //
-// An entry with "resize" is scaled down to that width after it is downloaded,
-// so the site never republishes someone else's full-resolution original.
+// An entry with "resize" is scaled down to that width and saved as a JPEG
+// after it is downloaded, so the site never republishes someone else's
+// full-resolution original. An entry without it is saved as downloaded, which
+// keeps the transparency of a PNG.
+//
+// An entry with "optional": true never stops a build. The page that uses it
+// checks for the file and falls back to text when it is not there.
 
 import { access, mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
@@ -47,14 +52,16 @@ for (const [name, image] of Object.entries(manifest)) {
   try {
     const response = await fetch(image.source, {
       headers: {
-        accept: "image/jpeg,image/*;q=0.8",
+        accept: "image/jpeg,image/png,image/*;q=0.8",
         "user-agent": "Mozilla/5.0 (compatible; alma-site-build)",
       },
       signal: AbortSignal.timeout(90_000),
     });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     let bytes = Buffer.from(await response.arrayBuffer());
-    if (bytes.length < 10_000) throw new Error("file is unexpectedly small");
+    if (bytes.length < (image.optional ? 1_000 : 10_000)) {
+      throw new Error("file is unexpectedly small");
+    }
 
     if (image.resize && sharp) {
       bytes = await sharp(bytes)
@@ -69,13 +76,15 @@ for (const [name, image] of Object.entries(manifest)) {
       `images: downloaded ${image.file} (${Math.round(bytes.length / 1024)} KB)`,
     );
   } catch (error) {
-    missing.push(name);
-    console.warn(`images: could not download ${image.file}: ${error.message}`);
+    if (!image.optional) missing.push(name);
+    console.warn(
+      `images: could not download ${image.file}${image.optional ? " (optional)" : ""}: ${error.message}`,
+    );
   }
 }
 
 if (missing.length > 0) {
-  const message = `images: ${missing.length} photograph(s) missing: ${missing.join(", ")}. Add them to public/images or check the source links in src/content/images.json.`;
+  const message = `images: ${missing.length} image(s) missing: ${missing.join(", ")}. Add them to public/images or check the source links in src/content/images.json.`;
   if (strict) {
     console.error(message);
     process.exit(1);

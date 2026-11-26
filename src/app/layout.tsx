@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { site } from "@/content/site";
-import { geist, newsreader } from "./fonts";
+import { dmSans, newsreader } from "./fonts";
 import "./globals.css";
 
 // The site stays out of search results until SITE_INDEXABLE is set to "true".
@@ -40,11 +40,11 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${newsreader.variable} ${geist.variable}`}>
+    <html lang="en" className={`${dmSans.variable} ${newsreader.variable}`}>
       <body>
         <a
           href="#main"
-          className="sr-only rounded-full bg-ink px-4 py-2 text-snow focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60]"
+          className="sr-only rounded-full bg-night px-5 py-2 font-medium text-snow focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60]"
         >
           Skip to content
         </a>

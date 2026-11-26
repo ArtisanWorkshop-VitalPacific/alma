@@ -11,10 +11,7 @@ export function Faq() {
       label={questions.label}
       heading={questions.heading}
     >
-      <Reveal
-        className="faq mt-8 border-t border-[var(--hair-strong)]"
-        delay={120}
-      >
+      <Reveal className="faq mx-auto max-w-[52rem] border-t border-[var(--hair-strong)]">
         {questions.items.map((item, index) => (
           <details
             key={item.q}

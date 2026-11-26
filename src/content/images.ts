@@ -6,11 +6,17 @@ export type Photo = {
   src: string;
   width: number;
   height: number;
-  blurDataURL: string;
+  /** A tiny blurred preview. Cutouts and logos have none. */
+  blurDataURL?: string;
 };
 
 function photo(name: PhotoName): Photo {
-  const entry = manifest[name];
+  const entry = manifest[name] as {
+    file: string;
+    width: number;
+    height: number;
+    blur?: string;
+  };
   return {
     src: `/images/${entry.file}`,
     width: entry.width,
@@ -20,14 +26,17 @@ function photo(name: PhotoName): Photo {
 }
 
 /**
- * Every photograph on the site, by name. scripts/fetch-images.mjs places the
+ * Every image on the site, by name. scripts/fetch-images.mjs places the
  * files in public/images before each build. Sources and credits are recorded
  * in images.json.
  *
- * cover, proof, quad: generated in Higgsfield.
+ * hero, proof, notebook: generated in Higgsfield.
  * biolaBellTower, biolaLibrary: from Biola University's press room. They
  *   appear only in the "Our story" section and need Biola's permission before
  *   the site is public.
+ * biolaLogo: Biola University's logo, as served on biola.edu. Optional: see
+ *   src/content/partner-logo.ts. Biola's approval is needed before the site
+ *   is public.
  * portrait1 to portrait7: stock portraits from Unsplash. They are shown with a
  *   group label only, never with a name, a quote or a story.
  */

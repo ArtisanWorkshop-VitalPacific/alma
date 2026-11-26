@@ -12,6 +12,9 @@
  *   means the library's archive of scholarly work.
  * - "Alumni, faculty, staff and friends" is the order advancement offices use.
  * - No em dashes.
+ *
+ * The page's look follows the design system recorded from sectionai.com. The
+ * voice does not: Alma's copy stays in full, measured sentences.
  */
 
 import type { PhotoName } from "./images";
@@ -43,26 +46,32 @@ export const nav = [
 export const cta = { href: "#contact", label: "Write to us" };
 
 export const hero = {
-  label: "An editorial studio and story library for universities",
   heading: "A university is best understood through the lives of its people.",
-  body: "Alma’s journalists document the careers and contributions of your alumni, faculty, staff and friends in reported profiles. We build a searchable story library for your institution, so that your staff can find the right story for a publication or a campaign.",
-  secondary: { href: "#approach", label: "How a profile is made" },
-  cover: {
-    kicker: ["Alumni, faculty,", "staff and friends"],
-    lead: ["Careers and", "contributions"],
-    list: ["Reported by journalists", "Kept in your library"],
-  },
-  /** The small search panel beside the cover. An illustration, not live data. */
-  finder: {
-    title: "Story library",
-    query: "Graduates and faculty working in public health",
-    results: [
-      { photo: "portrait1", kind: "Alumni" },
-      { photo: "portrait5", kind: "Alumni" },
-      { photo: "portrait2", kind: "Faculty" },
-    ] satisfies { photo: PhotoName; kind: string }[],
-    foot: "Search by keyword or in plain language",
-  },
+  /**
+   * Two sentences over the hero illustration. A phone shows the first only,
+   * so that the text stays on the sky.
+   */
+  body: [
+    "Alma’s journalists document the careers and contributions of your alumni, faculty, staff and friends in reported profiles.",
+    "We build a searchable story library for your institution, so that your staff can find the right story for a publication or a campaign.",
+  ],
+};
+
+/**
+ * The case-study strip directly under the hero, and the logo on the
+ * "Our story" card.
+ *
+ * logo.show: set to false to show the university's name in text instead of
+ * its logo. Biola restricts the use of its logo by outside parties to approved
+ * partners, so its approval is needed before the site is public.
+ * See src/content/partner-logo.ts.
+ */
+export const caseStudy = {
+  label: "Case study",
+  name: "Biola University",
+  body: "Since 2024 we have written more than a dozen alumni profiles for the university, several of them cover stories in Biola Magazine.",
+  link: { href: "#story", label: "Our work with Biola" },
+  logo: { show: true, alt: "Biola University" },
 };
 
 export const subjects = {
@@ -100,6 +109,8 @@ export const subjects = {
 export const purpose = {
   label: "Purpose",
   heading: "Why universities commission this work",
+  /** The words of the heading set in the accent colour. */
+  accent: "Why universities",
   lead: "What a university’s people go on to do is the strongest evidence of its work. Finding those people, interviewing them at length and writing about them well takes time that few communications offices can spare. Alma works alongside your team. Your departments gain experienced editors and journalists on demand, and can flex with the calendar, for work that meets your standards and reflects your values.",
   reasons: [
     {
@@ -138,11 +149,7 @@ export const purpose = {
 };
 
 export type OfficeId =
-  | "alumni"
-  | "donors"
-  | "enrollment"
-  | "newsletters"
-  | "president";
+  "alumni" | "donors" | "enrollment" | "newsletters" | "president";
 
 export type Office = {
   id: OfficeId;
@@ -258,7 +265,12 @@ export const library = {
         },
         {
           label: "College",
-          options: ["Arts and Sciences", "Business", "Education", "Engineering"],
+          options: [
+            "Arts and Sciences",
+            "Business",
+            "Education",
+            "Engineering",
+          ],
         },
       ],
       range: { label: "Class year", value: "1996 to 2006" },
@@ -267,8 +279,16 @@ export const library = {
       title: "Matched to your editorial calendar",
       body: "Find the stories that fit an issue, an appeal or a campaign before the planning meeting.",
       rows: [
-        { when: "Fall magazine", what: "Alumni in education", count: "8 profiles" },
-        { when: "Giving day", what: "Scholarship recipients", count: "5 profiles" },
+        {
+          when: "Fall magazine",
+          what: "Alumni in education",
+          count: "8 profiles",
+        },
+        {
+          when: "Giving day",
+          what: "Scholarship recipients",
+          count: "5 profiles",
+        },
         {
           when: "Reunion weekend",
           what: "Classes of 1996 and 2001",
@@ -498,9 +518,37 @@ export const questions = {
 export const contact = {
   label: "Contact",
   heading: "We would be glad to write a first profile for your university.",
+  /** The words of the heading set in the accent colour. */
+  accent: "a first profile for your university.",
   body: "Tell us a little about your institution and the person whose story you have in mind. The first profile is written without charge.",
 };
 
 export const footer = {
   copyright: "© 2026 Alma",
+  columns: [
+    {
+      label: "The work",
+      links: [
+        { href: "#purpose", label: "Purpose" },
+        { href: "#approach", label: "Approach" },
+        { href: "#standards", label: "Standards" },
+        { href: "#fees", label: "Fees" },
+      ],
+    },
+    {
+      label: "The library",
+      links: [
+        { href: "#library", label: "Story library" },
+        { href: "#search", label: "How the search works" },
+      ],
+    },
+    {
+      label: "Alma",
+      links: [
+        { href: "#story", label: "Our story" },
+        { href: "#questions", label: "Questions" },
+        { href: "#contact", label: "Write to us" },
+      ],
+    },
+  ],
 };
