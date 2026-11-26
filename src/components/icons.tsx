@@ -16,20 +16,6 @@ export function Check(props: IconProps) {
   );
 }
 
-export function CheckSmall(props: IconProps) {
-  return (
-    <svg viewBox="0 0 10 10" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M2 5.3l2 2 4-4.4"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 export function Plus(props: IconProps) {
   return (
     <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" {...props}>
@@ -61,6 +47,42 @@ export function Close(props: IconProps) {
     <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" {...props}>
       <path
         d="M5 5l10 10M15 5L5 15"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+export function Search(props: IconProps) {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" {...props}>
+      <circle cx="9" cy="9" r="5.25" stroke="currentColor" strokeWidth="1.6" />
+      <path
+        d="M13 13l3.5 3.5"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+export function Lock(props: IconProps) {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" {...props}>
+      <rect
+        x="4.75"
+        y="9"
+        width="10.5"
+        height="7.5"
+        rx="2"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+      <path
+        d="M7.25 9V6.75a2.75 2.75 0 015.5 0V9"
         stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"

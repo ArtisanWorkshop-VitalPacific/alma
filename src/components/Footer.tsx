@@ -1,4 +1,4 @@
-import { nav, site } from "@/content/site";
+import { footer, nav, site } from "@/content/site";
 
 export function Footer() {
   return (
@@ -22,6 +22,11 @@ export function Footer() {
                 </a>
               </li>
             ))}
+            <li>
+              <a href="#partnership" className="nav-link">
+                Partnership
+              </a>
+            </li>
             {site.contactEmail ? (
               <li>
                 <a href={`mailto:${site.contactEmail}`} className="nav-link">
@@ -32,9 +37,12 @@ export function Footer() {
           </ul>
         </div>
 
-        <p className="t-caption mt-12 text-ink-3">
-          © 2026 Alma. Human-reported. Human-written.
-        </p>
+        <div className="t-caption mt-12 grid max-w-[44rem] gap-1 text-snow-2">
+          {footer.notes.map((note) => (
+            <p key={note}>{note}</p>
+          ))}
+          <p className="mt-3">{footer.copyright}</p>
+        </div>
       </div>
     </footer>
   );

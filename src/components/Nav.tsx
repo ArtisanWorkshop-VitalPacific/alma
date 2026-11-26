@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { nav } from "@/content/site";
+import { cta, nav } from "@/content/site";
 import { Close, Menu } from "./icons";
 
 export function Nav() {
@@ -45,8 +45,8 @@ export function Nav() {
         </ul>
 
         <div className="flex items-center gap-1.5">
-          <a href="#start" className="btn btn-primary btn-sm">
-            Start with a free story
+          <a href={cta.href} className="btn btn-primary btn-sm">
+            {cta.label}
           </a>
           <button
             type="button"

@@ -1,15 +1,15 @@
-import { About } from "@/components/About";
-import { Channels } from "@/components/Channels";
-import { Facts } from "@/components/Facts";
+import { Approach } from "@/components/Approach";
+import { Contact } from "@/components/Contact";
 import { Faq } from "@/components/Faq";
+import { Fees } from "@/components/Fees";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
-import { HowItWorks } from "@/components/HowItWorks";
+import { Library } from "@/components/Library";
 import { Nav } from "@/components/Nav";
-import { Partner } from "@/components/Partner";
-import { Pricing } from "@/components/Pricing";
-import { Standard } from "@/components/Standard";
-import { Start } from "@/components/Start";
+import { Partnership } from "@/components/Partnership";
+import { Purpose } from "@/components/Purpose";
+import { Standards } from "@/components/Standards";
+import { Subjects } from "@/components/Subjects";
 
 export default function Home() {
   return (
@@ -17,15 +17,15 @@ export default function Home() {
       <Nav />
       <main id="main">
         <Hero />
-        <Facts />
-        <HowItWorks />
-        <Channels />
-        <Standard />
-        <Partner />
-        <Pricing />
-        <About />
+        <Subjects />
+        <Purpose />
+        <Library />
+        <Approach />
+        <Standards />
+        <Partnership />
+        <Fees />
         <Faq />
-        <Start />
+        <Contact />
       </main>
       <Footer />
     </>
