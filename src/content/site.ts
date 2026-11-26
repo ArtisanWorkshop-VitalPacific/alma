@@ -101,11 +101,11 @@ export const subjects = {
 export const purpose = {
   label: "Purpose",
   heading: "Why universities commission this work",
-  lead: "What a university’s people go on to do is the strongest evidence of its work. Finding those people, interviewing them at length and writing about them well takes time that few communications offices can spare. Alma gives your departments additional editorial capacity when they need it, for work that meets your standards and reflects your values.",
+  lead: "What a university’s people go on to do is the strongest evidence of its work. Finding those people, interviewing them at length and writing about them well takes time that few communications offices can spare. Alma works alongside your team. Your departments gain experienced editors and journalists on demand, and can flex with the calendar, for work that meets your standards and reflects your values.",
   reasons: [
     {
-      title: "Editorial capacity when it is needed",
-      body: "A magazine deadline, a campaign or a reunion year can call for more writing than a permanent staff can absorb. We accept profiles one at a time, so an office can add capacity for a single issue or for a whole year.",
+      title: "Editorial capacity on demand",
+      body: "A magazine deadline, a campaign or a reunion year can call for more writing than a permanent staff can absorb. We work alongside your team and accept profiles one at a time, so an office can flex for a single issue or for a whole year.",
     },
     {
       title: "Work that meets your standards and values",
