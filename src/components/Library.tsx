@@ -23,7 +23,7 @@ import { Reveal } from "./Reveal";
  * the interface drawings themselves are hidden from screen readers.
  */
 export function Library() {
-  const { offices, tiles, method } = library;
+  const { offices, tiles, method, connections } = library;
   const [active, setActive] = useState(0);
   // True once JavaScript is running and the visitor has not asked for less motion.
   const [motion, setMotion] = useState(false);
@@ -204,6 +204,36 @@ export function Library() {
           </ol>
           <p className="mx-auto mt-8 max-w-[44rem] text-center text-ink-2">
             {method.note}
+          </p>
+        </Reveal>
+
+        <Reveal className="mt-[clamp(3.5rem,6.7vw,6rem)]">
+          <h3
+            id="connections"
+            className="t-display-2 mx-auto max-w-[24ch] scroll-mt-24 text-center"
+          >
+            {connections.heading}
+          </h3>
+          <ul className="mt-8 grid gap-4 lg:grid-cols-3">
+            {connections.items.map((item) => (
+              <li key={item.tag} className="stage-card flex flex-col bg-paper">
+                <span className="tag self-start">{item.tag}</span>
+                <h4 className="t-subhead mt-4">{item.title}</h4>
+                <p className="mt-2 text-ink-2">{item.body}</p>
+                {item.systems ? (
+                  <ul className="mt-auto flex flex-wrap gap-2 pt-5">
+                    {item.systems.map((system) => (
+                      <li key={system} className="name-chip">
+                        {system}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+          <p className="mx-auto mt-8 max-w-[44rem] text-center text-ink-2">
+            {connections.note}
           </p>
         </Reveal>
       </div>

@@ -10,6 +10,7 @@
  *   never asks "where are they now".
  * - "Story library", not "repository". In a university that word already
  *   means the library's archive of scholarly work.
+ * - Say "alumni engagement", never "alumni relations" (Matt, 2026-11-26).
  * - Say "adjuncts and professors", never "faculty" (Matt, 2026-11-26). In a
  *   running list: "alumni, adjuncts, professors, staff and friends". As a
  *   label: "Adjuncts and professors". Tags in the interface examples are short:
@@ -126,7 +127,7 @@ export const purpose = {
     },
     {
       title: "Lasting contact with alumni",
-      body: "An extended interview is a kind of attention that few graduates receive from their university after commencement. It gives the alumni office a reason to be in touch that is not a request for a gift, and it can begin a relationship that lasts for years.",
+      body: "An extended interview is a kind of attention that few graduates receive from their university after commencement. It gives the alumni engagement office a reason to be in touch that is not a request for a gift, and it can begin a relationship that lasts for years.",
     },
     {
       title: "A library of the university’s stories",
@@ -179,9 +180,9 @@ export const library = {
   offices: [
     {
       id: "alumni",
-      label: "Alumni relations",
-      title: "Advancement and alumni relations",
-      body: "The alumni office can find profiles by class, region or profession for the magazine and for reunions. Each interview also renews the university’s contact with the person profiled.",
+      label: "Alumni engagement",
+      title: "Advancement and alumni engagement",
+      body: "The alumni engagement office can find profiles by class, region or profession for the magazine and for reunions. Each interview also renews the university’s contact with the person profiled.",
       query: "Alumni who work in education, for the fall issue of the magazine",
       results: [
         { photo: "portrait1", kind: "Alumni" },
@@ -340,6 +341,38 @@ export const library = {
       },
     ],
     note: "This method is called retrieval-augmented generation (RAG). The model is given only passages retrieved from your library. It does not write or alter the profiles.",
+  },
+  /**
+   * How the library reaches other systems. The product names are the vendors'
+   * own and are set in text only: no logos, and no claim of partnership.
+   * None of this is built yet (2026-11-26): see README, "Before launch".
+   */
+  connections: {
+    heading: "We connect your library to the systems your offices already use.",
+    items: [
+      {
+        tag: "API",
+        title: "An interface for your systems",
+        body: "Each library has an application programming interface (API). Your website, your data warehouse and your other systems can read profiles, their metadata and search results through it.",
+      },
+      {
+        tag: "MCP",
+        title: "A server for AI assistants",
+        body: "Each library also runs a Model Context Protocol (MCP) server. MCP is an open standard through which AI assistants reach outside sources, so an assistant your staff already use can search the library and cite the profiles it draws on.",
+      },
+      {
+        tag: "CRM",
+        title: "On the record in your CRM",
+        body: "We connect the library to the system your offices work in, so that a profile appears on the record of the person it is about.",
+        systems: [
+          "Blackbaud Raiser’s Edge NXT",
+          "Blackbaud CRM",
+          "Salesforce",
+          "Slate",
+        ],
+      },
+    ] as { tag: string; title: string; body: string; systems?: string[] }[],
+    note: "The API and the MCP server use the same sign-in and permissions as the library. A connection to your CRM is set up with your administrator.",
   },
 };
 
@@ -501,6 +534,10 @@ export const questions = {
       a: "It uses retrieval-augmented generation, often shortened to RAG. The system retrieves the passages in your library that are most relevant to a query, and a language model composes an answer from those passages with citations.",
     },
     {
+      q: "Does the library connect to our CRM?",
+      a: "Yes. Each library has an API and a Model Context Protocol (MCP) server, and we connect it to the system your offices use, such as Blackbaud Raiser’s Edge NXT, Blackbaud CRM, Salesforce or Slate. Your administrator authorizes the connection.",
+    },
+    {
       q: "Do you use artificial intelligence?",
       a: "We do not use it to write. Every interview is conducted by a journalist and every profile is written by one. Software is used for scheduling, for transcription and for search within the story library.",
     },
@@ -544,6 +581,7 @@ export const footer = {
       links: [
         { href: "#library", label: "Story library" },
         { href: "#search", label: "How the search works" },
+        { href: "#connections", label: "Connections" },
       ],
     },
     {

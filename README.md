@@ -60,6 +60,7 @@ The copy is written for senior university staff. The rules are at the top of
   "where are they now".
 - "Story library", not "repository". In a university, "institutional repository"
   already means the library's archive of scholarly work.
+- Say "alumni engagement", never "alumni relations".
 - Say "adjuncts and professors", never "faculty". In a running list: "alumni,
   adjuncts, professors, staff and friends". As a label: "Adjuncts and professors".
 - The search is described accurately: retrieval-augmented generation (RAG),
@@ -142,6 +143,11 @@ What does not exist yet:
 - Set `SITE_INDEXABLE` to `true`.
 - Get Biola's written permission for the two campus photographs, or replace them.
 - Get Biola's approval to show its logo, or set `caseStudy.logo.show` to `false`.
+- Build what the "connections" block promises: the library's API, its MCP
+  server, and a connection to each customer's CRM (Blackbaud Raiser's Edge NXT,
+  Blackbaud CRM, Salesforce, Slate). None of it exists yet. Each CRM connection
+  has to be authorized by the university's own administrator. The product names
+  are set in text only; showing a vendor's logo needs that vendor's permission.
 - Replace the stock portraits with released photographs, or with real portraits
   of people Alma has profiled, with their permission.
 - The story library is the software side of the business: Alma builds one for
