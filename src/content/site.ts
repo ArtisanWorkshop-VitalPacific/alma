@@ -10,6 +10,8 @@
  *   never asks "where are they now".
  * - "Story library", not "repository". In a university that word already
  *   means the library's archive of scholarly work.
+ * - Never give a count of the stories written for Biola University (Matt,
+ *   2026-11-26).
  * - Say "alumni engagement", never "alumni relations" (Matt, 2026-11-26).
  * - Say "adjuncts and professors", never "faculty" (Matt, 2026-11-26). In a
  *   running list: "alumni, adjuncts, professors, staff and friends". As a
@@ -73,7 +75,7 @@ export const hero = {
 export const caseStudy = {
   label: "Case study",
   name: "Biola University",
-  body: "Since 2024 we have written more than a dozen alumni profiles for the university, several of them cover stories in Biola Magazine.",
+  body: "Since 2024 we have written alumni profiles for the university, among them cover stories in Biola Magazine.",
   link: { href: "#story", label: "Our work with Biola" },
   logo: { show: true, alt: "Biola University" },
 };
@@ -430,7 +432,7 @@ export const story = {
   heading: "Alma grew out of Tom Pfingsten’s reporting for Biola University.",
   lead: "Tom Pfingsten is Alma’s founder and lead journalist. He has more than two decades of reporting experience, and he spent five years leading communications at Palomar College. Having worked both as a reporter and as the head of a college communications office, he understands institutional priorities as well as the craft of reporting.",
   body: [
-    "Alma’s partnership with Biola University began in 2024. Since then we have had the opportunity to tell the stories of some of Biola’s most notable alumni. More than a dozen profiles have been written, several of them as cover stories in Biola Magazine, and together they have helped Biola build a library of its graduates’ stories.",
+    "Alma’s partnership with Biola University began in 2024. Since then we have had the opportunity to tell the stories of some of Biola’s most notable alumni. Some of those profiles have run as cover stories in Biola Magazine, and together they have helped Biola build a library of its graduates’ stories.",
     "Alma now offers the same work to other institutions. Each profile is reported and written by an experienced journalist, and each university’s profiles are kept in a story library built for that institution.",
     "Tom is also a pastor at Emmanuel Baptist Church in Fallbrook, California. Our first work was in Christian higher education, and we are comfortable writing about faith where it is part of a person’s story.",
   ],
@@ -447,8 +449,8 @@ export const story = {
     name: "Biola University",
     title: "Inaugural partner, 2024 to present",
     ledger: [
-      { label: "Alumni profiles", value: "More than twelve" },
-      { label: "Biola Magazine cover stories", value: "Several" },
+      { label: "The work", value: "Profiles of alumni" },
+      { label: "In print", value: "Cover stories in Biola Magazine" },
     ],
   },
   photos: {

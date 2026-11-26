@@ -16,7 +16,7 @@ export function CaseStrip() {
 
   return (
     <section aria-label={caseStudy.label} className="case-strip bg-paper">
-      <div className="wrap case-grid">
+      <div className="wrap-wide case-grid">
         <p className="case-label">{caseStudy.label}</p>
         {logo ? (
           <Image

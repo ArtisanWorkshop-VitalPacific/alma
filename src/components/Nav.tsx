@@ -26,7 +26,7 @@ export function Nav() {
 
   return (
     <header className={`site-nav ${scrolled || open ? "is-solid" : ""}`}>
-      <nav aria-label="Primary" className="wrap site-nav-bar">
+      <nav aria-label="Primary" className="wrap-wide site-nav-bar">
         <a href="#top" className="wordmark" aria-label="Alma, back to top">
           Alma
         </a>

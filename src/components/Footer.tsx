@@ -3,7 +3,7 @@ import { footer, site } from "@/content/site";
 export function Footer() {
   return (
     <footer className="on-dark bg-black">
-      <div className="wrap pb-6 pt-[clamp(3.5rem,6.7vw,6rem)]">
+      <div className="wrap-wide pb-6 pt-[clamp(3.5rem,6.7vw,6rem)]">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-24">
           <div>
             <a href="#top" className="wordmark" aria-label="Alma, back to top">

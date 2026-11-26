@@ -33,6 +33,12 @@ matched, what was substituted and what was not copied.
   paper texture, copy or font file. The hero illustration and the notebook were
   generated in Higgsfield. The torn edges are drawn in `src/components/Torn.tsx`.
 - The voice is Alma's, not Section's: full, measured sentences.
+- The hero's motion is written with GSAP (`gsap`, `@gsap/react`, both under
+  GreenSock's standard no-charge licence) in `src/components/Hero.tsx`: the
+  picture settles from a slight zoom, the title rises line by line, the
+  picture moves in as the page scrolls and leans a few pixels away from the
+  cursor. None of it runs when the visitor asks for reduced motion, and the
+  page reads the same without JavaScript.
 - The earlier design (serif headings, a label column beside each section) is
   kept on the branch `v1-prospectus`.
 
@@ -60,6 +66,7 @@ The copy is written for senior university staff. The rules are at the top of
   "where are they now".
 - "Story library", not "repository". In a university, "institutional repository"
   already means the library's archive of scholarly work.
+- Never give a count of the stories written for Biola University.
 - Say "alumni engagement", never "alumni relations".
 - Say "adjuncts and professors", never "faculty". In a running list: "alumni,
   adjuncts, professors, staff and friends". As a label: "Adjuncts and professors".
