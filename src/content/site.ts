@@ -37,7 +37,7 @@ export const facts = [
 
 export const trackerSteps = [
   "Warm lead received",
-  "Interview with Tom",
+  "Zoom interview with Tom",
   "Feature written",
   "Delivered, ready to publish",
 ];
@@ -49,7 +49,7 @@ export const steps = [
   },
   {
     title: "Tom reports the story.",
-    body: "He conducts the interview and writes every word himself.",
+    body: "He interviews your alum over Zoom and writes every word himself.",
   },
   {
     title: "Receive a finished feature.",
@@ -142,6 +142,10 @@ export const faqs = [
   {
     q: "How long does a story take?",
     a: "Two to three weeks from the lead to a finished, ready-to-publish feature.",
+  },
+  {
+    q: "How are interviews conducted?",
+    a: "Over Zoom. Tom interviews every alum himself, wherever they are.",
   },
   {
     q: "What does it cost?",

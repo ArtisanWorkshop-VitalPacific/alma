@@ -24,10 +24,10 @@ function photo(name: keyof typeof manifest): Photo {
 export const photos = {
   /** Sunlit campus arcade. Hero cover and the magazine and social mock-ups. */
   cover: photo("cover"),
-  /** Interview table with notebook and recorder. How it works. */
+  /** Desk during a video-call interview. How it works. */
   interview: photo("interview"),
   /** Marked-up manuscript pages. The standard. */
   proof: photo("proof"),
-  /** Academic hall at blue hour. Closing section. */
+  /** Academic hall at blue hour. Closing section and the website mock-up. */
   quad: photo("quad"),
 };

@@ -38,7 +38,7 @@ The four photographs were generated in Higgsfield. They are not in the repo yet.
 using the links in `src/content/images.json`. A build on Vercel stops if one is missing.
 
 To make the repo self-contained, save the four files into `public/images` as
-`cover.jpg`, `interview.jpg`, `proof.jpg`, and `quad.jpg`, delete the
+`cover.jpg`, `interview-zoom.jpg`, `proof.jpg`, and `quad.jpg`, delete the
 `/public/images/*.jpg` line from `.gitignore`, and commit them. The script then
 skips the download.
 

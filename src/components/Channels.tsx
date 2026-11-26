@@ -202,12 +202,12 @@ function WebsiteMock() {
           <div>
             <div className="relative aspect-[16/9] overflow-hidden rounded-[1.4cqi]">
               <Image
-                src={photos.interview.src}
+                src={photos.quad.src}
                 alt=""
                 fill
                 sizes="(min-width: 66.75rem) 380px, 50vw"
                 placeholder="blur"
-                blurDataURL={photos.interview.blurDataURL}
+                blurDataURL={photos.quad.blurDataURL}
                 className="object-cover"
               />
             </div>

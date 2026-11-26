@@ -20,7 +20,7 @@ export function HowItWorks() {
             <div className="relative aspect-[3/2] overflow-hidden rounded-[28px] bg-mist">
               <Image
                 src={photos.interview.src}
-                alt="A small table set for an interview: an open notebook, a pen, an audio recorder, and two cups of coffee."
+                alt="A desk during a video-call interview: a laptop with a caller on screen, headphones, an open notebook and pen, and a cup of coffee."
                 fill
                 sizes="(min-width: 66.75rem) 680px, 100vw"
                 placeholder="blur"
