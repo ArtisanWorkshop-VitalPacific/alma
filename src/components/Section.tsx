@@ -12,8 +12,6 @@ type SectionProps = {
   /** A long lead reads better set left under the centred heading. */
   leadAlign?: "center" | "start";
   tone?: "paper" | "mist";
-  /** A soft band of colour at the top of the section. */
-  glow?: boolean;
   /** The section's content, under the heading, across the full width. */
   children?: ReactNode;
 };
@@ -49,16 +47,14 @@ export function Section({
   lead,
   leadAlign = "center",
   tone = "paper",
-  glow = false,
   children,
 }: SectionProps) {
   return (
     <section
       id={id}
       aria-labelledby={`${id}-heading`}
-      className={`section ${tones[tone]} ${glow ? "band-glow" : ""}`}
+      className={`section ${tones[tone]}`}
     >
-      {glow ? <div className="glow" aria-hidden="true" /> : null}
       <div className="wrap">
         <Reveal className="sec-head">
           <p className="sec-label">{label}</p>

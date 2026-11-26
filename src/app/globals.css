@@ -5,10 +5,15 @@
 
    The system follows the one recorded from sectionai.com on 2026-11-26:
    a geometric sans for headings and text, a serif for small labels, white
-   and warm off-white bands, near-black pill buttons, a brown and tan accent, an
-   amber accent on dark, and torn-paper edges.
+   and light grey bands, black pill buttons, and torn-paper edges.
 
-   Colours, sizes, radii and shadows are the measured values. The typefaces
+   The palette is white, black and grey only, at Matt's direction on
+   2026-11-26. Every interface colour below is a neutral: no hue at all.
+   The reference site's warm off-whites, its blue accent and its amber are
+   not used. Photographs, the hero illustration and a partner's logo keep
+   their own colours.
+
+   Sizes, radii and shadows are the measured values. The typefaces
    are open-licensed stand-ins: DM Sans for Goga and Newsreader for Azurio,
    which are commercial faces Alma does not hold a licence for.
    The same values are mirrored in design/tokens.json.
@@ -20,30 +25,25 @@
   --breakpoint-lg: 66.75rem; /* 1068px */
   --breakpoint-xl: 90rem; /* 1440px */
 
-  --color-ink: #0a070d;
-  --color-ink-2: #484640;
-  /* The source uses #7a7770 here. Darkened so small text passes AA on the warm bands. */
-  --color-ink-3: #6b6862;
+  --color-ink: #0a0a0a;
+  --color-ink-2: #474747;
+  --color-ink-3: #686868;
   --color-paper: #ffffff;
-  --color-mist: #faf9f6;
-  --color-sand: #f3f2f1;
-  --color-kraft: #f0eee7;
+  --color-mist: #f5f5f5;
+  --color-sand: #f0f0f0;
+  --color-kraft: #ebebeb;
   --color-line: #e8e8e8;
-  --color-night: #121313;
-  --color-coal: #121313;
+  --color-night: #121212;
+  --color-coal: #121212;
   --color-black: #000000;
   --color-snow: #ffffff;
-  --color-snow-2: #b3b7b9;
+  --color-snow-2: #b5b5b5;
   --color-snow-3: #909090;
-  /* Mouse brown and tan: the accent pair on light bands, at Matt's direction
-     on 2026-11-26. Brown is for the accent card, accent text and marks. Tan
-     is for the large library tile, tints, chart bars and the soft band of
-     colour. No blue and no green. Both are set here and nowhere else.
-     Tan is the web colour of that name. */
-  --color-alma: #6b5a4c;
-  --color-alma-ink: #6b5a4c;
-  --color-alma-soft: #d2b48c;
-  --color-amber: #f3b30e;
+  /* The accent is black. Accent text is grey. Both are set here and
+     nowhere else, and every tint is mixed from --color-alma. */
+  --color-alma: #121212;
+  --color-alma-ink: #6b6b6b;
+  --color-alma-soft: #8a8a8a;
 
   --font-sans:
     var(--font-dm-sans), -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -60,19 +60,18 @@
   /* Accent for text and small marks. Fills use --color-alma. */
   --accent: var(--color-alma-ink);
   --accent-hover: var(--color-alma);
-  /* An accent surface and the text on it. Brown with white text by default;
-     the large library tile re-points these to tan with dark text. */
+  /* An accent surface and the text on it: black with white text. */
   --fill: var(--color-alma);
   --on-fill: #fff;
-  --on-fill-2: rgb(255 255 255 / 0.9);
-  /* Pale backgrounds for tags, badges and selected chips, mixed from the tan. */
-  --tint: color-mix(in srgb, var(--color-alma-soft) 40%, transparent);
-  --tint-weak: color-mix(in srgb, var(--color-alma-soft) 28%, transparent);
+  --on-fill-2: rgb(255 255 255 / 0.82);
+  /* Pale grey backgrounds for tags, badges and selected chips. */
+  --tint: color-mix(in srgb, var(--color-alma) 9%, transparent);
+  --tint-weak: color-mix(in srgb, var(--color-alma) 5%, transparent);
   --text-1: var(--color-ink);
   --text-2: var(--color-ink-2);
   --text-3: var(--color-ink-3);
   --hair: var(--color-line);
-  --hair-strong: #d9d7d2;
+  --hair-strong: #d6d6d6;
   --gutter: clamp(1.1875rem, 5.55vw, 5rem);
   --section: clamp(4rem, 6.7vw, 6rem);
   --radius-1: 5px;
@@ -82,13 +81,13 @@
   --radius-5: 25px;
   --shadow-card: 0 8px 20px rgb(0 0 0 / 0.08);
   /* Paper grain for the torn sheets. */
-  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .32  0 0 0 0 .28  0 0 0 0 .2  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.34'/%3E%3C/svg%3E");
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .26  0 0 0 0 .26  0 0 0 0 .26  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.34'/%3E%3C/svg%3E");
 }
 
 /* Dark bands re-point the same variables, so components need no dark variants. */
 .on-dark {
-  --accent: var(--color-amber);
-  --accent-hover: #ffc93a;
+  --accent: var(--color-snow-2);
+  --accent-hover: #fff;
   --text-1: var(--color-snow);
   --text-2: var(--color-snow-2);
   --text-3: var(--color-snow-3);
@@ -105,7 +104,7 @@
   --text-2: var(--color-ink-2);
   --text-3: var(--color-ink-3);
   --hair: var(--color-line);
-  --hair-strong: #d9d7d2;
+  --hair-strong: #d6d6d6;
   color: var(--text-1);
 }
 
@@ -136,11 +135,11 @@
   }
 
   ::selection {
-    background: color-mix(in srgb, var(--color-alma-soft) 55%, transparent);
+    background: color-mix(in srgb, var(--color-alma-soft) 35%, transparent);
   }
 
   :focus-visible {
-    outline: 2px solid var(--accent);
+    outline: 2px solid var(--text-1);
     outline-offset: 3px;
     border-radius: 4px;
   }
@@ -374,8 +373,8 @@
   }
 
   .btn-primary:hover {
-    background: #3a383d;
-    border-color: #3a383d;
+    background: #3a3a3a;
+    border-color: #3a3a3a;
   }
 
   .btn-outline {
@@ -855,44 +854,6 @@
 
   /* ---------- Story library: a grid of interface examples ---------- */
 
-  /* A soft band of colour at the top of a section. It is its own element,
-     not a pseudo-element, so that contrast checks can still read the section. */
-  .band-glow {
-    isolation: isolate;
-    position: relative;
-  }
-
-  .glow {
-    background:
-      radial-gradient(
-        36% 70% at 10% 0%,
-        color-mix(in srgb, var(--color-alma-soft) 55%, transparent),
-        transparent 72%
-      ),
-      radial-gradient(
-        30% 62% at 36% 0%,
-        rgb(255 204 204 / 0.5),
-        transparent 72%
-      ),
-      radial-gradient(
-        30% 62% at 62% 0%,
-        rgb(243 179 14 / 0.2),
-        transparent 72%
-      ),
-      radial-gradient(
-        36% 70% at 90% 0%,
-        color-mix(in srgb, var(--color-alma-soft) 45%, transparent),
-        transparent 72%
-      );
-    height: clamp(12rem, 22vw, 20rem);
-    inset: 0 0 auto;
-    -webkit-mask-image: linear-gradient(to bottom, #000 10%, transparent);
-    mask-image: linear-gradient(to bottom, #000 10%, transparent);
-    pointer-events: none;
-    position: absolute;
-    z-index: -1;
-  }
-
   .bento {
     display: grid;
     gap: 0.875rem;
@@ -935,11 +896,8 @@
     max-width: 34rem;
   }
 
-  /* The large tile is the tan surface. Its interface panel stays white. */
+  /* The large tile is the black surface. Its interface panel stays white. */
   .tile-ask {
-    --fill: var(--color-alma-soft);
-    --on-fill: var(--color-ink);
-    --on-fill-2: color-mix(in srgb, var(--color-ink) 82%, transparent);
     background: var(--fill);
     color: var(--on-fill);
   }
@@ -973,7 +931,7 @@
   .tile-ask .ui {
     background: #fff;
     border-color: transparent;
-    box-shadow: 0 10px 30px rgb(10 7 13 / 0.18);
+    box-shadow: 0 10px 30px rgb(0 0 0 / 0.18);
   }
 
   .ui-flush {
@@ -1002,7 +960,7 @@
   }
 
   .pill {
-    background: rgb(10 7 13 / 0.06);
+    background: rgb(0 0 0 / 0.06);
     border-radius: 99px;
     color: var(--color-ink);
     flex: none;
@@ -1296,7 +1254,7 @@
   }
 
   .range {
-    background: rgb(10 7 13 / 0.1);
+    background: rgb(0 0 0 / 0.1);
     border-radius: 99px;
     height: 0.25rem;
     position: relative;
@@ -1633,7 +1591,7 @@
   }
 
   .footer-link:hover {
-    color: var(--color-amber);
+    color: #fff;
   }
 }
 
@@ -1654,8 +1612,8 @@
   36%,
   100% {
     background-color: #fff;
-    border-color: #d9d7d2;
-    color: #0a070d;
+    border-color: #d6d6d6;
+    color: #0a0a0a;
   }
 
   5%,

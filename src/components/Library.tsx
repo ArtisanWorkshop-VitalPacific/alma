@@ -76,9 +76,8 @@ export function Library() {
     <section
       id="library"
       aria-labelledby="library-heading"
-      className="section band-glow bg-mist"
+      className="section bg-mist"
     >
-      <div className="glow" aria-hidden="true" />
       <div className="wrap">
         <Reveal className="sec-head">
           <p className="sec-label">{library.label}</p>

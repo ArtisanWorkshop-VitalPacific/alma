@@ -22,8 +22,8 @@ npm run build   # downloads the images, then builds
 
 The look follows the design system recorded from https://www.sectionai.com/ on
 2026-11-26, at Matt's request: a geometric sans for headings and text, a serif
-for small labels, white and warm off-white bands, near-black pill buttons, a brown
-and tan accent, an amber accent on the dark closing band, and torn-paper edges.
+for small labels, white and light grey bands, black pill buttons, and
+torn-paper edges.
 The measured values are in `design/tokens.json`, with a list of what was
 matched, what was substituted and what was not copied.
 
@@ -32,12 +32,12 @@ matched, what was substituted and what was not copied.
 - Nothing of Section's own was copied: no logo, illustration, photograph, icon,
   paper texture, copy or font file. The hero illustration and the notebook were
   generated in Higgsfield. The torn edges are drawn in `src/components/Torn.tsx`.
-- The accent is a pair: mouse brown, `#6b5a4c`, and tan, `#d2b48c` (Matt,
-  2026-11-26: no blue, and tan and brown in place of green). Brown is the
-  accent card, accent text and marks. Tan is the large library tile, the
-  tints, the chart bars and the soft band of colour. Both are set once, as
-  `--color-alma` and `--color-alma-soft` in `src/app/globals.css`. The only
-  blue left is the sky in the hero illustration and the fill behind it.
+- The palette is white, black and grey only (Matt, 2026-11-26, after the
+  reference site's blue, a forest green and a tan-and-brown pair were each
+  tried). Every interface colour is a neutral. The accent card and the large
+  library tile are black, accent text is grey, and tags and chart bars are
+  grey. The colours are set once, at the top of `src/app/globals.css`.
+  Photographs, the hero illustration and Biola's logo keep their own colours.
 - The voice is Alma's, not Section's: full, measured sentences.
 - The hero's motion is written with GSAP (`gsap`, `@gsap/react`, both under
   GreenSock's standard no-charge licence) in `src/components/Hero.tsx`: the
