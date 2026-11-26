@@ -5,7 +5,7 @@
 
    The system follows the one recorded from sectionai.com on 2026-11-26:
    a geometric sans for headings and text, a serif for small labels, white
-   and warm off-white bands, near-black pill buttons, one forest green accent, an
+   and warm off-white bands, near-black pill buttons, a brown and tan accent, an
    amber accent on dark, and torn-paper edges.
 
    Colours, sizes, radii and shadows are the measured values. The typefaces
@@ -35,13 +35,14 @@
   --color-snow: #ffffff;
   --color-snow-2: #b3b7b9;
   --color-snow-3: #909090;
-  /* Forest green: the one accent on light bands, for fills and for text.
-     The reference site's blue accent is not used anywhere, at Matt's
-     direction on 2026-11-26. Every tint is mixed from --color-alma, so the
-     green is set in this one place. White on it measures 8.1:1. */
-  --color-alma: #235b2c;
-  --color-alma-ink: #235b2c;
-  --color-alma-soft: #93b996;
+  /* Mouse brown and tan: the accent pair on light bands, at Matt's direction
+     on 2026-11-26. Brown is for the accent card, accent text and marks. Tan
+     is for the large library tile, tints, chart bars and the soft band of
+     colour. No blue and no green. Both are set here and nowhere else.
+     Tan is the web colour of that name. */
+  --color-alma: #6b5a4c;
+  --color-alma-ink: #6b5a4c;
+  --color-alma-soft: #d2b48c;
   --color-amber: #f3b30e;
 
   --font-sans:
@@ -59,6 +60,14 @@
   /* Accent for text and small marks. Fills use --color-alma. */
   --accent: var(--color-alma-ink);
   --accent-hover: var(--color-alma);
+  /* An accent surface and the text on it. Brown with white text by default;
+     the large library tile re-points these to tan with dark text. */
+  --fill: var(--color-alma);
+  --on-fill: #fff;
+  --on-fill-2: rgb(255 255 255 / 0.9);
+  /* Pale backgrounds for tags, badges and selected chips, mixed from the tan. */
+  --tint: color-mix(in srgb, var(--color-alma-soft) 40%, transparent);
+  --tint-weak: color-mix(in srgb, var(--color-alma-soft) 28%, transparent);
   --text-1: var(--color-ink);
   --text-2: var(--color-ink-2);
   --text-3: var(--color-ink-3);
@@ -127,7 +136,7 @@
   }
 
   ::selection {
-    background: color-mix(in srgb, var(--color-alma) 22%, transparent);
+    background: color-mix(in srgb, var(--color-alma-soft) 55%, transparent);
   }
 
   :focus-visible {
@@ -711,12 +720,15 @@
   }
 
   .row-card.is-accent {
-    background: var(--color-alma);
+    background: var(--fill);
   }
 
-  .row-card.is-accent h3,
+  .row-card.is-accent h3 {
+    color: var(--on-fill);
+  }
+
   .row-card.is-accent p {
-    color: #fff;
+    color: var(--on-fill-2);
   }
 
   .stage-card {
@@ -923,14 +935,17 @@
     max-width: 34rem;
   }
 
-  /* The large tile is the accent card. Its interface panel stays white. */
+  /* The large tile is the tan surface. Its interface panel stays white. */
   .tile-ask {
-    background: var(--color-alma);
-    color: #fff;
+    --fill: var(--color-alma-soft);
+    --on-fill: var(--color-ink);
+    --on-fill-2: color-mix(in srgb, var(--color-ink) 82%, transparent);
+    background: var(--fill);
+    color: var(--on-fill);
   }
 
   .tile-ask .tile-body {
-    color: rgb(255 255 255 / 0.88);
+    color: var(--on-fill-2);
   }
 
   /* The interface drawing sits at the foot of its tile. */
@@ -999,12 +1014,12 @@
   }
 
   .pill-accent {
-    background: color-mix(in srgb, var(--color-alma) 12%, transparent);
+    background: var(--tint);
     color: var(--color-alma);
   }
 
   .cite {
-    background: color-mix(in srgb, var(--color-alma) 13%, transparent);
+    background: var(--tint);
     border-radius: 5px;
     color: var(--color-alma);
     flex: none;
@@ -1173,7 +1188,7 @@
 
   .rec-avatar {
     aspect-ratio: 1;
-    background: color-mix(in srgb, var(--color-alma) 13%, transparent);
+    background: var(--tint);
     border: 1px solid color-mix(in srgb, var(--color-alma) 32%, transparent);
     border-radius: 50%;
   }
@@ -1209,7 +1224,7 @@
   }
 
   .tag {
-    background: color-mix(in srgb, var(--color-alma) 12%, transparent);
+    background: var(--tint);
     border-radius: 99px;
     color: var(--color-alma);
     font-size: 0.75rem;
@@ -1268,7 +1283,7 @@
   }
 
   .f-chip.is-on {
-    background-color: color-mix(in srgb, var(--color-alma) 13%, transparent);
+    background-color: var(--tint);
     border-color: color-mix(in srgb, var(--color-alma) 55%, transparent);
     color: var(--color-alma);
   }
@@ -1380,7 +1395,7 @@
 
   .priv-badge {
     align-items: center;
-    background: color-mix(in srgb, var(--color-alma) 12%, transparent);
+    background: var(--tint);
     border-radius: 99px;
     color: var(--color-alma);
     display: inline-flex;
@@ -1645,7 +1660,7 @@
 
   5%,
   30% {
-    background-color: color-mix(in srgb, var(--color-alma) 13%, transparent);
+    background-color: var(--tint);
     border-color: color-mix(in srgb, var(--color-alma) 55%, transparent);
     color: var(--color-alma);
   }
@@ -1660,6 +1675,6 @@
 
   4%,
   22% {
-    background-color: color-mix(in srgb, var(--color-alma) 10%, transparent);
+    background-color: var(--tint-weak);
   }
 }
