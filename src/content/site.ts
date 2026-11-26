@@ -376,7 +376,8 @@ export const story = {
   lead: "Tom Pfingsten is Alma’s founder and lead journalist. He has more than two decades of reporting experience, and he spent five years leading communications at Palomar College. Having worked both as a reporter and as the head of a college communications office, he understands institutional priorities as well as the craft of reporting.",
   body: [
     "Alma’s partnership with Biola University began in 2024. Since then we have had the opportunity to tell the stories of some of Biola’s most notable alumni. More than a dozen profiles have been written, several of them as cover stories in Biola Magazine, and together they have helped Biola build a library of its graduates’ stories.",
-    "Alma now offers the same work to other institutions. Each profile is reported and written by an experienced journalist, and each university’s profiles are kept in a story library built for that institution. Our first work was in Christian higher education, and we are comfortable writing about faith where it is part of a person’s story.",
+    "Alma now offers the same work to other institutions. Each profile is reported and written by an experienced journalist, and each university’s profiles are kept in a story library built for that institution.",
+    "Tom is also a pastor at Emmanuel Baptist Church in Fallbrook, California. Our first work was in Christian higher education, and we are comfortable writing about faith where it is part of a person’s story.",
   ],
   founder: {
     name: "Tom Pfingsten",
@@ -384,6 +385,7 @@ export const story = {
     ledger: [
       { label: "Reporting experience", value: "More than twenty years" },
       { label: "Palomar College", value: "Five years leading communications" },
+      { label: "Emmanuel Baptist Church, Fallbrook", value: "Pastor" },
     ],
   },
   partner: {
