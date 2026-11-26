@@ -23,7 +23,7 @@ npm run build   # downloads the images, then builds
 The look follows the design system recorded from https://www.sectionai.com/ on
 2026-11-26, at Matt's request: a geometric sans for headings and text, a serif
 for small labels, white and warm off-white bands, near-black pill buttons, one
-blue accent, an amber accent on the dark closing band, and torn-paper edges.
+accent, an amber accent on the dark closing band, and torn-paper edges.
 The measured values are in `design/tokens.json`, with a list of what was
 matched, what was substituted and what was not copied.
 
@@ -32,6 +32,10 @@ matched, what was substituted and what was not copied.
 - Nothing of Section's own was copied: no logo, illustration, photograph, icon,
   paper texture, copy or font file. The hero illustration and the notebook were
   generated in Higgsfield. The torn edges are drawn in `src/components/Torn.tsx`.
+- The accent is forest green, `#235b2c`, not the reference site's blue (Matt,
+  2026-11-26: no blue on the site). It is set once, as `--color-alma` in
+  `src/app/globals.css`, and every tint is mixed from it. The only blue left
+  is the sky in the hero illustration and the fill behind it.
 - The voice is Alma's, not Section's: full, measured sentences.
 - The hero's motion is written with GSAP (`gsap`, `@gsap/react`, both under
   GreenSock's standard no-charge licence) in `src/components/Hero.tsx`: the

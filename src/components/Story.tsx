@@ -69,7 +69,7 @@ export function Story() {
                     />
                   </h3>
                 ) : (
-                  <h3 className="fact-label text-green">{partner.name}</h3>
+                  <h3 className="fact-label text-alma">{partner.name}</h3>
                 )}
                 <p className={`fact-sub ${logo ? "!mt-5" : ""}`}>
                   {partner.title}
