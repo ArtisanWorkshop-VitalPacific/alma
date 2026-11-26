@@ -1,8 +1,8 @@
 # Alma
 
 Marketing site for Alma: an editorial studio and story library for universities.
-Alma's journalists report and write profiles of a university's alumni, faculty,
-staff and friends, and keep them in a searchable story library.
+Alma's journalists report and write profiles of a university's alumni, adjuncts,
+professors, staff and friends, and keep them in a searchable story library.
 
 One page. Next.js 16 (App Router), TypeScript, Tailwind CSS 4. Deployed on Vercel
 from the `main` branch.
@@ -60,7 +60,8 @@ The copy is written for senior university staff. The rules are at the top of
   "where are they now".
 - "Story library", not "repository". In a university, "institutional repository"
   already means the library's archive of scholarly work.
-- "Alumni, faculty, staff and friends" in that order.
+- Say "adjuncts and professors", never "faculty". In a running list: "alumni,
+  adjuncts, professors, staff and friends". As a label: "Adjuncts and professors".
 - The search is described accurately: retrieval-augmented generation (RAG),
   semantic search, metadata, citations.
 - No em dashes.

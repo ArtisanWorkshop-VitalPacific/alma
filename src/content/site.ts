@@ -10,7 +10,10 @@
  *   never asks "where are they now".
  * - "Story library", not "repository". In a university that word already
  *   means the library's archive of scholarly work.
- * - "Alumni, faculty, staff and friends" is the order advancement offices use.
+ * - Say "adjuncts and professors", never "faculty" (Matt, 2026-11-26). In a
+ *   running list: "alumni, adjuncts, professors, staff and friends". As a
+ *   label: "Adjuncts and professors". Tags in the interface examples are short:
+ *   "Adjuncts", "Professors".
  * - No em dashes.
  *
  * The page's look follows the design system recorded from sectionai.com. The
@@ -24,7 +27,7 @@ export const site = {
   tagline: "An editorial studio and story library for universities",
   title: "Alma | Editorial studio and story library for universities",
   description:
-    "Alma’s journalists document the careers and contributions of a university’s alumni, faculty, staff and friends in reported profiles, and build a searchable story library for each institution.",
+    "Alma’s journalists document the careers and contributions of a university’s alumni, adjuncts, professors, staff and friends in reported profiles, and build a searchable story library for each institution.",
   /**
    * Where the contact form sends its email.
    * Set NEXT_PUBLIC_CONTACT_EMAIL in the Vercel project settings.
@@ -52,7 +55,7 @@ export const hero = {
    * so that the text stays on the sky.
    */
   body: [
-    "Alma’s journalists document the careers and contributions of your alumni, faculty, staff and friends in reported profiles.",
+    "Alma’s journalists document the careers and contributions of your alumni, adjuncts, professors, staff and friends in reported profiles.",
     "We build a searchable story library for your institution, so that your staff can find the right story for a publication or a campaign.",
   ],
 };
@@ -86,7 +89,7 @@ export const subjects = {
       alt: "A woman in a blue dress and glasses, smiling, seated in an office.",
     },
     {
-      title: "Faculty",
+      title: "Adjuncts and professors",
       body: "Scholars and teachers, and the research and mentoring for which they are known.",
       photo: "portrait2",
       alt: "A bearded man in round glasses and a striped shirt.",
@@ -99,7 +102,7 @@ export const subjects = {
     },
     {
       title: "Friends of the university",
-      body: "Donors, parents, trustees and volunteers who have made the university’s work their own.",
+      body: "Donors, parents, trustees and volunteers who empower the university’s mission.",
       photo: "portrait4",
       alt: "A man in glasses and a navy blazer, standing by a window.",
     },
@@ -207,7 +210,7 @@ export const library = {
       results: [
         { photo: "portrait7", kind: "Alumni" },
         { photo: "portrait1", kind: "Alumni" },
-        { photo: "portrait2", kind: "Faculty" },
+        { photo: "portrait2", kind: "Professors" },
       ],
     },
     {
@@ -215,11 +218,12 @@ export const library = {
       label: "Newsletters",
       title: "Newsletter teams",
       body: "Newsletter editors can match a story to the theme of an issue and excerpt it, with a link to the full profile.",
-      query: "Faculty and staff who mentor first-generation students",
+      query:
+        "Adjuncts, professors and staff who mentor first-generation students",
       results: [
-        { photo: "portrait6", kind: "Faculty" },
+        { photo: "portrait6", kind: "Adjuncts" },
         { photo: "portrait3", kind: "Staff" },
-        { photo: "portrait2", kind: "Faculty" },
+        { photo: "portrait2", kind: "Professors" },
       ],
     },
     {
@@ -346,7 +350,7 @@ export const approach = {
   stages: [
     {
       title: "An introduction",
-      body: "You tell us whose story you would like told and put us in touch. The person may be a graduate, a member of the faculty or staff, or a friend of the university.",
+      body: "You tell us whose story you would like told and put us in touch. The person may be a graduate, an adjunct, a professor, a member of staff or a friend of the university.",
     },
     {
       title: "The interview",
@@ -474,7 +478,7 @@ export const questions = {
     },
     {
       q: "Whose stories do you write?",
-      a: "Alumni, faculty, staff and friends of the university. Friends include donors, parents, trustees and volunteers.",
+      a: "Alumni, adjuncts, professors, staff and friends of the university. Friends include donors, parents, trustees and volunteers.",
     },
     {
       q: "How are interviews conducted?",
