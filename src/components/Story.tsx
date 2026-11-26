@@ -1,23 +1,28 @@
 import Image from "next/image";
 import { photos } from "@/content/images";
-import { partnership } from "@/content/site";
+import { story } from "@/content/site";
 import { Reveal } from "./Reveal";
 import { Section } from "./Section";
 
 /**
- * Biola University, Alma's inaugural partner. The name is set in type: no
- * university logo is used. The two campus photographs come from Biola's press
- * room and are credited to Biola. They need Biola's permission before launch.
+ * Our story: Tom Pfingsten's background and the work for Biola University,
+ * Alma's inaugural partner. This is the one place on the site that names Tom.
+ *
+ * Biola is named in type: no university logo is used. The two campus
+ * photographs come from Biola's press room and are credited to Biola. They
+ * need Biola's permission before launch. There is no portrait of Tom until a
+ * real photograph is supplied.
  */
-export function Partnership() {
-  const { bellTower, library } = partnership.photos;
+export function Story() {
+  const { founder, partner } = story;
+  const { bellTower, library } = story.photos;
 
   return (
     <Section
-      id="partnership"
-      label={partnership.label}
-      heading={partnership.heading}
-      lead={partnership.lead}
+      id="story"
+      label={story.label}
+      heading={story.heading}
+      lead={story.lead}
       wide={
         <Reveal className="mt-[clamp(2.5rem,5vw,4rem)]">
           <figure>
@@ -46,21 +51,38 @@ export function Partnership() {
               </div>
             </div>
             <figcaption className="t-caption mt-3 text-ink-2">
-              {partnership.caption} {partnership.credit}
+              {story.caption} {story.credit}
             </figcaption>
           </figure>
         </Reveal>
       }
     >
-      <Reveal delay={120}>
-        <dl className="ledger mt-10 max-w-[41rem]">
-          {partnership.ledger.map((row) => (
-            <div key={row.label}>
-              <dt>{row.label}</dt>
-              <dd>{row.value}</dd>
-            </div>
+      <Reveal delay={100}>
+        <div className="mt-6 grid max-w-[41rem] gap-5">
+          {story.body.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
           ))}
-        </dl>
+        </div>
+      </Reveal>
+
+      <Reveal
+        delay={160}
+        className="mt-[clamp(2.5rem,5vw,3.75rem)] grid gap-x-12 gap-y-10 md:grid-cols-2"
+      >
+        {[founder, partner].map((entry) => (
+          <div key={entry.name}>
+            <h3 className="t-subhead">{entry.name}</h3>
+            <p className="mt-1 text-ink-2">{entry.title}</p>
+            <dl className="ledger mt-5">
+              {entry.ledger.map((row) => (
+                <div key={row.label}>
+                  <dt>{row.label}</dt>
+                  <dd>{row.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        ))}
       </Reveal>
     </Section>
   );

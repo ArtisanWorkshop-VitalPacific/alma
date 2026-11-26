@@ -6,9 +6,9 @@ import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { Library } from "@/components/Library";
 import { Nav } from "@/components/Nav";
-import { Partnership } from "@/components/Partnership";
 import { Purpose } from "@/components/Purpose";
 import { Standards } from "@/components/Standards";
+import { Story } from "@/components/Story";
 import { Subjects } from "@/components/Subjects";
 
 export default function Home() {
@@ -22,7 +22,7 @@ export default function Home() {
         <Library />
         <Approach />
         <Standards />
-        <Partnership />
+        <Story />
         <Fees />
         <Faq />
         <Contact />

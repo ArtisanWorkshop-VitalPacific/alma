@@ -35,7 +35,8 @@ The copy is written for senior university staff. The rules are at the top of
 `src/content/site.ts`. In short:
 
 - Full, measured sentences in the institutional "we". No slogans.
-- No journalist is named. Experience is stated as the team's.
+- The work is described without naming a journalist. Tom Pfingsten is named in
+  one place only: the "Our story" section, with the Biola partnership.
 - A profile documents a person's career and contribution. The site never asks
   "where are they now".
 - "Story library", not "repository". In a university, "institutional repository"
@@ -62,7 +63,7 @@ A build on Vercel stops if one is missing.
 | Photographs | Source | Status |
 | --- | --- | --- |
 | `cover`, `proof`, `quad` | Generated in Higgsfield | Illustrative |
-| `biola-bell-tower`, `biola-library` | Biola University press room stock photos | Need Biola's permission before launch. Scaled down to 2400px wide at build time. Used only in the partnership section, credited to Biola. |
+| `biola-bell-tower`, `biola-library` | Biola University press room stock photos | Need Biola's permission before launch. Scaled down to 2400px wide at build time. Used only in the "Our story" section, credited to Biola. |
 | `portrait-1` to `portrait-7` | Unsplash (photographers are listed in `images.json`) | Stock. The page does not label them as stock. The free Unsplash licence does not include model releases. Replace with released or real portraits before launch. |
 
 To make the repo self-contained, save the files into `public/images` under the
@@ -106,6 +107,7 @@ What does not exist yet:
   up for a customer.
 - Confirm the documentary claim ("Emmy Award-winning documentary producers")
   with the producers who will be named if a university asks.
+- "Our story" has no portrait. Add a real photograph of Tom when one is available.
 - The wordmark is set in type. Replace it when a logo exists.
 
 ## Honest-content rules for this site

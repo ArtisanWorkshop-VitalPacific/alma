@@ -4,7 +4,8 @@
  * Voice rules for this file:
  * - Full, measured sentences in the institutional "we". No slogans and no
  *   paired fragments.
- * - No journalist is named. Experience is stated as the team's.
+ * - The work is described without naming a journalist. Tom Pfingsten is named
+ *   in one place only: the "Our story" section.
  * - The subject of a profile is a person's career and contribution. The site
  *   never asks "where are they now".
  * - "Story library", not "repository". In a university that word already
@@ -34,6 +35,7 @@ export const nav = [
   { href: "#library", label: "Library" },
   { href: "#approach", label: "Approach" },
   { href: "#standards", label: "Standards" },
+  { href: "#story", label: "Our story" },
   { href: "#fees", label: "Fees" },
 ];
 
@@ -366,29 +368,32 @@ export const standards = {
   note: "No part of a profile is drafted by a language model. The library’s search retrieves and summarizes what our journalists have already written.",
   photoAlt:
     "Printed manuscript pages marked up by hand in red pencil, with reading glasses resting on top.",
-  experience: {
-    title: "Experience",
-    body: "Our editorial team brings more than two decades of reporting experience and five years of leadership in higher-education communications. Alma’s work began in Christian higher education, and we are comfortable writing about faith where it is part of a person’s story.",
-    ledger: [
-      { label: "Reporting experience", value: "More than twenty years" },
-      {
-        label: "Higher-education communications",
-        value: "Five years in leadership",
-      },
-      { label: "Biola Magazine", value: "Several cover stories" },
-    ],
-  },
 };
 
-export const partnership = {
-  label: "Partnership",
-  heading: "Biola University, 2024 to present",
-  lead: "Alma’s first partnership began at Biola University in 2024. Since then we have had the opportunity to tell the stories of some of Biola’s most notable alumni, several of them as cover stories in Biola Magazine.",
-  ledger: [
-    { label: "Partnership began", value: "2024" },
-    { label: "Alumni profiles", value: "More than twelve" },
-    { label: "Biola Magazine cover stories", value: "Several" },
+export const story = {
+  label: "Our story",
+  heading: "Alma grew out of Tom Pfingsten’s reporting for Biola University.",
+  lead: "Tom Pfingsten is Alma’s founder and lead journalist. He has more than two decades of reporting experience, and he spent five years leading communications at Palomar College. Having worked both as a reporter and as the head of a college communications office, he understands institutional priorities as well as the craft of reporting.",
+  body: [
+    "Alma’s partnership with Biola University began in 2024. Since then we have had the opportunity to tell the stories of some of Biola’s most notable alumni. More than a dozen profiles have been written, several of them as cover stories in Biola Magazine, and together they have helped Biola build a library of its graduates’ stories.",
+    "Alma now offers the same work to other institutions. Each profile is reported and written by an experienced journalist, and each university’s profiles are kept in a story library built for that institution. Our first work was in Christian higher education, and we are comfortable writing about faith where it is part of a person’s story.",
   ],
+  founder: {
+    name: "Tom Pfingsten",
+    title: "Founder and Lead Journalist",
+    ledger: [
+      { label: "Reporting experience", value: "More than twenty years" },
+      { label: "Palomar College", value: "Five years leading communications" },
+    ],
+  },
+  partner: {
+    name: "Biola University",
+    title: "Inaugural partner, 2024 to present",
+    ledger: [
+      { label: "Alumni profiles", value: "More than twelve" },
+      { label: "Biola Magazine cover stories", value: "Several" },
+    ],
+  },
   photos: {
     bellTower: {
       photo: "biolaBellTower",

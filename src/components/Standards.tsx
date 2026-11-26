@@ -6,11 +6,10 @@ import { Reveal } from "./Reveal";
 import { Section } from "./Section";
 
 /**
- * Who does the work, what software is used for, and the team's experience.
- * No person is named here.
+ * Who does the work and what software is used for. No person is named here.
  */
 export function Standards() {
-  const { journalists, software, experience } = standards;
+  const { journalists, software } = standards;
 
   return (
     <Section
@@ -49,7 +48,9 @@ export function Standards() {
               </ul>
             </div>
           </div>
-          <p className="rule-strong mt-8 max-w-[34rem] pt-6">{standards.note}</p>
+          <p className="rule-strong mt-8 max-w-[34rem] pt-6">
+            {standards.note}
+          </p>
         </Reveal>
 
         <Reveal delay={120}>
@@ -66,21 +67,6 @@ export function Standards() {
           </div>
         </Reveal>
       </div>
-
-      <Reveal className="rule-strong mt-[clamp(2.5rem,5vw,3.75rem)] grid gap-8 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.92fr)] lg:gap-12">
-        <div>
-          <h3 className="t-subhead">{experience.title}</h3>
-          <p className="mt-3 max-w-[34rem] text-ink-2">{experience.body}</p>
-        </div>
-        <dl className="ledger">
-          {experience.ledger.map((row) => (
-            <div key={row.label}>
-              <dt>{row.label}</dt>
-              <dd>{row.value}</dd>
-            </div>
-          ))}
-        </dl>
-      </Reveal>
     </Section>
   );
 }

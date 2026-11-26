@@ -26,7 +26,7 @@ function photo(name: PhotoName): Photo {
  *
  * cover, proof, quad: generated in Higgsfield.
  * biolaBellTower, biolaLibrary: from Biola University's press room. They
- *   appear only in the partnership section and need Biola's permission before
+ *   appear only in the "Our story" section and need Biola's permission before
  *   the site is public.
  * portrait1 to portrait7: stock portraits from Unsplash. They are shown with a
  *   group label only, never with a name, a quote or a story.

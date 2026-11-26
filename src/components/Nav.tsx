@@ -34,7 +34,7 @@ export function Nav() {
           Alma
         </a>
 
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="hidden items-center gap-5 md:flex lg:gap-8">
           {nav.map((item) => (
             <li key={item.href}>
               <a href={item.href} className="nav-link">

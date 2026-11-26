@@ -22,11 +22,6 @@ export function Footer() {
                 </a>
               </li>
             ))}
-            <li>
-              <a href="#partnership" className="nav-link">
-                Partnership
-              </a>
-            </li>
             {site.contactEmail ? (
               <li>
                 <a href={`mailto:${site.contactEmail}`} className="nav-link">
